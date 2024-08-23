@@ -1,5 +1,4 @@
 namespace keeper.Services;
-
 public class AccountService
 {
   private readonly AccountsRepository _repo;
