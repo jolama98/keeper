@@ -15,4 +15,6 @@ public class KeepsController : ControllerBase
         _keepsService = keepsService;
         _auth0Provider = auth0Provider;
     }
+
+    public class createKeep
 }
