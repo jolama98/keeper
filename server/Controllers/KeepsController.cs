@@ -1,9 +1,8 @@
 namespace keeper.Controllers;
 
-[Authorize]
-[ApiController]
-[Route("[controller]")]
 
+[ApiController]
+[Route("api/[controller]")]
 
 public class KeepsController : ControllerBase
 {
@@ -16,5 +15,21 @@ public class KeepsController : ControllerBase
         _auth0Provider = auth0Provider;
     }
 
-    public class createKeep
+    [HttpPost]
+    [Authorize]
+    public async Task<ActionResult<Keep>> CreateKeep([FromBody] Keep keepData)
+
+    {
+        try
+        {
+            Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+            keepData.CreatorId = userInfo.Id;
+            Keep keep = _keepsService.CreateKeep(keepData);
+            return Ok(keep);
+        }
+        catch (Exception exception)
+        {
+            return BadRequest(exception.Message);
+        }
+    }
 }
