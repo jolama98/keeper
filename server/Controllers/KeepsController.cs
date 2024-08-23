@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices.JavaScript;
+
 namespace keeper.Controllers;
 
 
@@ -63,4 +65,51 @@ public class KeepsController : ControllerBase
         }
     }
 
+    [HttpDelete("{keepId}")]
+    public async Task<ActionResult<string>> DestroyKeep(int keepId)
+    {
+        try
+        {
+            Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+            string message = _keepsService.DestroyKeep(keepId, userInfo.Id);
+            return Ok(message);
+        }
+        catch (Exception exception)
+        {
+            return BadRequest(exception.Message);
+        }
+    }
+
+    [HttpPut("{keepId}")]
+    public async Task<ActionResult<Keep>> UpdateKeep(int keepId, [FromBody] Keep keepData)
+    {
+        try
+        {
+            Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+            Keep keep = _keepsService.UpdateKeep(keepId, userInfo.Id, keepData);
+            return Ok(keep);
+
+        }
+        catch (Exception exception)
+        {
+            return BadRequest(exception.Message);
+        }
+    }
+
+
+    //   [HttpPut("{carId}")]
+    //     [Authorize]
+    //     public async Task<ActionResult<Car>> UpdateCar(int carId, [FromBody] Car carData)
+    //     {
+    //         try
+    //         {
+    //             Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+    //             Car car = _carsService.UpdateCar(carId, userInfo.Id, carData);
+    //             return Ok(car);
+    //         }
+    //         catch (Exception exception)
+    //         {
+    //             return BadRequest(exception.Message);
+    //         }
+    //     }
 }

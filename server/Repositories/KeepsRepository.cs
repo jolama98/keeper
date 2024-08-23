@@ -32,6 +32,17 @@ public class KeepsRepository
         return keep;
     }
 
+    internal void DestroyKeep(int keepId)
+    {
+        string sql = "DELETE FROM keeps WHERE id = @keepId LIMIT 1";
+
+        int rowsAffected = _db.Execute(sql, new { keepId });
+
+        if (rowsAffected == 0) throw new Exception("DELETE FAILED");
+        if (rowsAffected > 1) throw new Exception("DELETE WAS OVER POWERED!!!!!!!");
+
+    }
+
     internal List<Keep> GetAllKeeps()
     {
         string sql = @"
@@ -68,7 +79,20 @@ public class KeepsRepository
         }).FirstOrDefault();
 
         return keep;
+    }
+    internal void UpdateKeep(Keep keepToUpdate)
+    {
+        string sql = @"
+        UPDATE
+        keeps
+        Set
+        description = @Description,
+        name = @Name
+        WHERE id  = @Id LIMIT 1;";
 
+        int rowsAffected = _db.Execute(sql, keepToUpdate);
+        if (rowsAffected == 0) throw new Exception("UPDATE FAILED");
+        if (rowsAffected > 1) throw new Exception("UPDATE DID NOT FAIL, BUT THAT IS STILL A PROBLEM");
     }
 
     internal void UpdateViews(Keep keep)
