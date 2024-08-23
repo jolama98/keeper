@@ -1,4 +1,5 @@
 
+
 namespace keeper.Repositories;
 
 public class KeepsRepository
@@ -25,14 +26,35 @@ public class KeepsRepository
         JOIN accounts ON accounts.id = keeps.creatorId
         WHERE keeps.id = LAST_INSERT_ID();";
 
-        //     restaurants.*,
-        // accounts.*
-        // FROM restaurants
-        // JOIN accounts ON accounts.id = restaurants.creatorId
-        // WHERE restaurants.id = LAST_INSERT_ID(); ";
-
         Keep keep = _db.Query<Keep, Profile, Keep>(sql, JoinCreator, keepData).FirstOrDefault();
         return keep;
+    }
+
+    internal List<Keep> GetAllKeeps()
+    {
+        string sql = @"
+    SELECT
+    keeps.*,
+    accounts.*
+    FROM keeps
+    JOIN accounts ON accounts.id = keeps.creatorId
+    ;";
+
+        List<Keep> keep = _db.Query<Keep, Profile, Keep>(sql, (keep, profile) =>
+        {
+            keep.Creator = profile;
+            return keep;
+        }).ToList();
+
+        return keep;
+        /*
+            List<Restaurant> restaurants = _db.Query<Restaurant, Profile, Restaurant>(sql,
+            (restaurant, profile) =>
+            {
+              restaurant.Creator = profile;
+              return restaurant;
+            }).ToList();
+        */
     }
 
     private Keep JoinCreator(Keep keep, Profile profile)
