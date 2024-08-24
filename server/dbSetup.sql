@@ -39,10 +39,20 @@ CREATE TABLE vaultKeep(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
 updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+creatorId VARCHAR(255) NOT NULL,
 keepId INT NOT NULL,
 vaultId INT NOT NULL,
-creatorId VARCHAR(255) NOT NULL,
 FOREIGN KEY (vaultId) REFERENCES vaults (id) ON DELETE CASCADE,
 FOREIGN KEY (keepId) REFERENCES keeps (id) ON DELETE CASCADE,
 FOREIGN KEY (creatorId) REFERENCES accounts (id) ON DELETE CASCADE
 )
+
+INSERT INTO
+    vaultKeep (vaultId, keepId, creatorId)
+VALUES (@vaultId, @keepId, @creatorId);
+
+SELECT vaultKeep.*, accounts.*
+FROM vaultKeep
+    JOIN accounts ON accounts.id = vaultKeep.creatorId
+WHERE
+    vaultKeep.id = LAST_INSERT_ID();

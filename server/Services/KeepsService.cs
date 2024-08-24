@@ -62,5 +62,29 @@ public class KeepsService
 
         return keepToUpdate;
     }
+
+    internal Keep GetKeepById(int keepId, string userId)
+    {
+        Keep keep = GetKeepById(keepId);
+        if (keep.CreatorId != userId)
+        {
+
+        }
+        return keep;
+    }
+
+
+
+    // internal Restaurant GetRestaurantById(int restaurantId, string userId)
+    // {
+    //     Restaurant restaurant = GetRestaurantById(restaurantId);
+    //      If you aren't the owner of the restaurant and it is shut down
+    //     if (restaurant.CreatorId != userId && restaurant.IsShutdown == true)
+    //     {
+    //         throw new Exception($"No restaurant found with the id of {restaurantId} 😉");
+    //     }
+
+    //     return restaurant;
+    // }
 }
 
