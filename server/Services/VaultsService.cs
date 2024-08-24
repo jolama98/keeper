@@ -1,6 +1,5 @@
 
 
-using System.Reflection.Metadata.Ecma335;
 
 public class VaultsService
 {
@@ -39,6 +38,7 @@ public class VaultsService
         }
         return vault;
     }
+
 
     internal Vault UpdateVault(int vaultId, string userId, Vault vaultData)
     {
