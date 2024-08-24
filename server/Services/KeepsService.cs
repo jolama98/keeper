@@ -54,7 +54,7 @@ public class KeepsService
         Keep keepToUpdate = GetKeepById(keepId);
         if (keepToUpdate.CreatorId != userId)
         {
-            throw new Exception("YOU CANNOT UPDATE A CAR YOU DID NOT CREATE, THAT IS FORBIDDEN, PLEASE IGNORE THE 400 ERROR CODE, IT SHOULD BE 403");
+            throw new Exception("YOU CANNOT UPDATE A KEEP YOU DID NOT CREATE, THAT IS FORBIDDEN, PLEASE IGNORE THE 400 ERROR CODE, IT SHOULD BE 403");
         }
 
         keepToUpdate.Name = keepData.Name ?? keepData.Name;
