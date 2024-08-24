@@ -1,6 +1,5 @@
 
-
-
+namespace keeper.Services;
 public class VaultsService
 {
     private readonly VaultsRepository _vaultsRepository;
