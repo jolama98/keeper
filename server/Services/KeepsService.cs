@@ -27,9 +27,7 @@ public class KeepsService
         }
         _keepsRepository.DestroyKeep(keepId);
 
-
-        return $"Keep was DELETED!";
-
+        return "Keep was DELETED!";
     }
 
 
