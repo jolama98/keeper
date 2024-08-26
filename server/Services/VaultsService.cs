@@ -1,4 +1,5 @@
 
+
 namespace keeper.Services;
 public class VaultsService
 {
@@ -17,27 +18,15 @@ public class VaultsService
 
     internal string DestroyVault(int vaultId, string userId)
     {
-        Vault vault = GetVaultById(vaultId);
-        if (vault.CreatorId != userId)
+        Vault destroyVault = GetVaultById(vaultId);
+        if (destroyVault.CreatorId != userId)
         {
             throw new Exception("YOU DID NOT CREATE THIS VAULT AWAY");
         }
         _vaultsRepository.DestroyVault(vaultId);
 
-        return "Vault was DELETE";
+        return $"{destroyVault.Name} Vault was DELETE";
     }
-
-
-    internal Vault GetVaultById(int vaultId)
-    {
-        Vault vault = _vaultsRepository.GetVaultById(vaultId);
-        if (vault == null)
-        {
-            throw new Exception($"No vault was found with the id of {vaultId}");
-        }
-        return vault;
-    }
-
 
     internal Vault UpdateVault(int vaultId, string userId, Vault vaultData)
     {
@@ -52,6 +41,47 @@ public class VaultsService
         _vaultsRepository.UpdateVault(vaultToUpdate);
         return vaultToUpdate;
     }
+
+
+    //? private Restaurant GetRestaurantById(int restaurantId)
+    //? {
+    //?     Restaurant restaurant = _repository.GetById(restaurantId);
+
+    //?     if (restaurant == null)
+    //?     {
+    //?         throw new Exception($"No restaurant found with the id of {restaurantId}");
+    //?     }
+
+    //?     return restaurant;
+    //? }
+
+    private Vault GetVaultById(int vaultId)
+    {
+        Vault vault = _vaultsRepository.GetVaultById(vaultId);
+        if (vault == null)
+        {
+            throw new Exception($"No vault was found with the id of {vaultId}");
+        }
+        return vault;
+    }
+    internal Vault GetPublicVault(int vaultId, string userId)
+    {
+        Vault vault = GetVaultById(vaultId);
+        if (vault.CreatorId != userId && vault.IsPrivate == true)
+        {
+            throw new Exception("NOTHING TO SEE HERE 👀👀👀");
+        }
+        return vault;
+    }
+
+
+    internal Vault GetVaultById(int vaultId, string userId)
+    {
+        Vault vault = _vaultsRepository.GetVaultById(vaultId);
+        if (vault.CreatorId != userId && vault.IsPrivate != false)
+        {
+            throw new Exception($"No vault was found with the id of {vaultId}");
+        }
+        return vault;
+    }
 }
-
-

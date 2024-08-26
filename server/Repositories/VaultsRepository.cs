@@ -1,4 +1,6 @@
 
+
+
 namespace keeper.Repositories;
 
 public class VaultsRepository
@@ -38,7 +40,6 @@ public class VaultsRepository
         if (rowsAffected > 1) throw new Exception("DELETE WAS OVER POWERED!!!!!!!");
     }
 
-
     internal Vault GetVaultById(int vaultId)
     {
         string sql = @"
@@ -55,8 +56,8 @@ public class VaultsRepository
             vaultId
         }).FirstOrDefault();
         return vault;
-
     }
+
 
     internal void UpdateVault(Vault vaultToUpdate)
     {

@@ -41,6 +41,9 @@ public class KeepsService
         }
         return keep;
     }
+
+
+
     internal List<Keep> GetAllKeeps()
     {
         List<Keep> keep = _keepsRepository.GetAllKeeps();
@@ -75,16 +78,5 @@ public class KeepsService
 
 
 
-    // internal Restaurant GetRestaurantById(int restaurantId, string userId)
-    // {
-    //     Restaurant restaurant = GetRestaurantById(restaurantId);
-    //      If you aren't the owner of the restaurant and it is shut down
-    //     if (restaurant.CreatorId != userId && restaurant.IsShutdown == true)
-    //     {
-    //         throw new Exception($"No restaurant found with the id of {restaurantId} 😉");
-    //     }
-
-    //     return restaurant;
-    // }
 }
 

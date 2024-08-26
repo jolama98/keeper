@@ -1,7 +1,7 @@
 namespace keeper.Controllers;
 
 
-[Authorize]
+// [Authorize]
 [ApiController]
 [Route("api/[controller]")]
 
@@ -16,8 +16,8 @@ public class KeepsController : ControllerBase
         _auth0Provider = auth0Provider;
     }
 
+    [Authorize]
     [HttpPost]
-
     public async Task<ActionResult<Keep>> CreateKeep([FromBody] Keep keepData)
 
     {
@@ -62,7 +62,7 @@ public class KeepsController : ControllerBase
             return BadRequest(exception.Message);
         }
     }
-
+    [Authorize]
     [HttpDelete("{keepId}")]
     public async Task<ActionResult<string>> DestroyKeep(int keepId)
     {
@@ -77,7 +77,7 @@ public class KeepsController : ControllerBase
             return BadRequest(exception.Message);
         }
     }
-
+    [Authorize]
     [HttpPut("{keepId}")]
     public async Task<ActionResult<Keep>> UpdateKeep(int keepId, [FromBody] Keep keepData)
     {
@@ -93,4 +93,6 @@ public class KeepsController : ControllerBase
             return BadRequest(exception.Message);
         }
     }
+
+
 }
