@@ -36,31 +36,29 @@ public class VaultKeepRepository
         string sql = @"
         SELECT
         vaultKeep.*,
+        keeps.*,
         accounts.*
         FROM vaultKeep
         JOIN accounts ON accounts.id = vaultKeep.creatorId
+        JOIN keeps ON keeps.id = vaultKeep.keepId
         WHERE vaultKeep.vaultId = @vaultId
         ;";
 
         List<VaultKeep> vaultKeeps = _db.Query<VaultKeep, Profile, VaultKeep>(sql, JoinCreator, new { vaultId }).ToList();
         return vaultKeeps;
+
+        //         List<JoinedCult> joinedCults = _db.Query<CultMember, JoinedCult, Profile, JoinedCult>(sql,
+        //   (cultMember, cult, leader) =>
+        //   {
+        //       cult.CultMemberId = cultMember.Id;
+        //       cult.CultId = cultMember.CultId;
+        //       cult.AccountId = cultMember.AccountId;
+        //       cult.Leader = leader;
+        //       return cult;
+        //   }, new { userId }).ToList();
+
+        //         return joinedCults;
     }
-
-
-
-    // internal List<Report> GetReportsByRestaurantId(int restaurantId)
-    // {
-    //     string sql = @"
-    // SELECT
-    // reports.*,
-    // accounts.*
-    // FROM reports
-    // JOIN accounts ON accounts.id = reports.creatorId
-    // WHERE reports.restaurantId = @restaurantId;";
-
-    //     List<Report> reports = _db.Query<Report, Profile, Report>(sql, JoinCreator, new { restaurantId }).ToList();
-    //     return reports;
-    // }
     private VaultKeep JoinCreator(VaultKeep vaultKeep, Profile profile)
     {
         vaultKeep.Creator = profile;

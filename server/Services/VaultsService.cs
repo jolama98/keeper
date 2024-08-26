@@ -42,19 +42,6 @@ public class VaultsService
         return vaultToUpdate;
     }
 
-
-    //? private Restaurant GetRestaurantById(int restaurantId)
-    //? {
-    //?     Restaurant restaurant = _repository.GetById(restaurantId);
-
-    //?     if (restaurant == null)
-    //?     {
-    //?         throw new Exception($"No restaurant found with the id of {restaurantId}");
-    //?     }
-
-    //?     return restaurant;
-    //? }
-
     private Vault GetVaultById(int vaultId)
     {
         Vault vault = _vaultsRepository.GetVaultById(vaultId);
@@ -67,7 +54,7 @@ public class VaultsService
     internal Vault GetPublicVault(int vaultId, string userId)
     {
         Vault vault = GetVaultById(vaultId);
-        if (vault.CreatorId != userId && vault.IsPrivate == true)
+        if (vault.CreatorId == userId && vault.IsPrivate == true)
         {
             throw new Exception("NOTHING TO SEE HERE 👀👀👀");
         }

@@ -89,7 +89,6 @@ public class VaultsController : ControllerBase
         {
             Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
             List<VaultKeep> vaultKeep = _vaultKeepService.GetPublicVault(vaultId, userInfo?.Id);
-            //Restaurant restaurant = _restaurantsService.GetRestaurantById(restaurantId, userInfo?.Id);
             return Ok(vaultKeep);
         }
         catch (Exception exception)
