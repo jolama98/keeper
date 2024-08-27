@@ -8,12 +8,14 @@ namespace keeper.Controllers;
 public class KeepsController : ControllerBase
 {
     private readonly KeepsService _keepsService;
+    private readonly VaultKeepService _vaultKeepService;
     private readonly Auth0Provider _auth0Provider;
 
-    public KeepsController(KeepsService keepsService, Auth0Provider auth0Provider)
+    public KeepsController(KeepsService keepsService, Auth0Provider auth0Provider, VaultKeepService vaultKeepService)
     {
         _keepsService = keepsService;
         _auth0Provider = auth0Provider;
+        _vaultKeepService = vaultKeepService;
     }
 
     [Authorize]

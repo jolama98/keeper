@@ -1,5 +1,5 @@
 namespace keeper.Controllers;
-[Authorize]
+
 [ApiController]
 [Route("api/[controller]")]
 public class VaultkeepsController : ControllerBase
@@ -14,13 +14,14 @@ public class VaultkeepsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<VaultKeep>> CreateVaultKeep([FromBody] VaultKeep vaultKeepData)
+    // [Authorize]
+    public async Task<ActionResult<VaultKeepProfile>> CreateVaultKeep([FromBody] VaultKeep vaultKeepData)
     {
         try
         {
             Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
             vaultKeepData.CreatorId = userInfo.Id;
-            VaultKeep vaultKeep = _vaultKeepService.CreateVaultKeep(vaultKeepData);
+            VaultKeepProfile vaultKeep = _vaultKeepService.CreateVaultKeep(vaultKeepData);
             return Ok(vaultKeep);
         }
         catch (Exception exception)

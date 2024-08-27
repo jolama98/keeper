@@ -13,7 +13,7 @@ public class VaultKeepRepository
         _db = db;
     }
 
-    internal VaultKeep CreateVaultKeep(VaultKeep vaultKeepData)
+    internal VaultKeepProfile CreateVaultKeep(VaultKeep vaultKeepData)
     {
         string sql = @"
         INSERT INTO
@@ -27,11 +27,24 @@ public class VaultKeepRepository
         JOIN accounts ON accounts.id = vaultKeep.creatorId
         WHERE vaultKeep.id = LAST_INSERT_ID();";
 
-        VaultKeep vaultKeep = _db.Query<VaultKeep, Profile, VaultKeep>(sql, JoinCreator, vaultKeepData).FirstOrDefault();
+        // AlbumMemberProfile albumMember = _db.Query<AlbumMember, AlbumMemberProfile, AlbumMemberProfile>(sql, (albumMember, profile) =>
+        //    {
+        //        profile.AlbumId = albumMember.AlbumId;
+        //        profile.AlbumMemberId = albumMember.Id;
+        //        return profile;
+        //    }, albumMemberData).FirstOrDefault();
+
+        // return albumMember;
+        VaultKeepProfile vaultKeep = _db.Query<VaultKeep, VaultKeepProfile, VaultKeepProfile>(sql, (vaultKeep, profile) =>
+        {
+            profile.KeepId = vaultKeep.KeepId;
+            profile.VaultKeepId = vaultKeep.Id;
+            return profile;
+        }, vaultKeepData).FirstOrDefault();
         return vaultKeep;
     }
 
-    internal List<VaultKeep> GetPublicVault(int vaultId)
+    internal List<VaultKeepKeep> GetKeepsInVault(int vaultId, string userId)
     {
         string sql = @"
         SELECT
@@ -44,25 +57,21 @@ public class VaultKeepRepository
         WHERE vaultKeep.vaultId = @vaultId
         ;";
 
-        List<VaultKeep> vaultKeeps = _db.Query<VaultKeep, Profile, VaultKeep>(sql, JoinCreator, new { vaultId }).ToList();
-        return vaultKeeps;
+        List<VaultKeepKeep> vaultKeepKeep = _db.Query<VaultKeep, VaultKeepKeep, Profile, VaultKeepKeep>(sql, (vaultKeep, keep, profile) =>
+        {
+            keep.AccountId = vaultKeep.CreatorId;
+            keep.VaultKeepId = vaultKeep.Id;
+            keep.Creator = profile;
+            return keep;
+        }, new { userId, vaultId }).ToList();
+        return vaultKeepKeep;
 
-        //         List<JoinedCult> joinedCults = _db.Query<CultMember, JoinedCult, Profile, JoinedCult>(sql,
-        //   (cultMember, cult, leader) =>
-        //   {
-        //       cult.CultMemberId = cultMember.Id;
-        //       cult.CultId = cultMember.CultId;
-        //       cult.AccountId = cultMember.AccountId;
-        //       cult.Leader = leader;
-        //       return cult;
-        //   }, new { userId }).ToList();
 
-        //         return joinedCults;
     }
-    private VaultKeep JoinCreator(VaultKeep vaultKeep, Profile profile)
-    {
-        vaultKeep.Creator = profile;
-        return vaultKeep;
-    }
+    // private VaultKeep JoinCreator(VaultKeep vaultKeep, Profile profile)
+    // {
+    //     vaultKeep.Creator = profile;
+    //     return vaultKeep;
+    // }
 }
 

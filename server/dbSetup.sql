@@ -56,3 +56,11 @@ FROM vaultKeep
     JOIN accounts ON accounts.id = vaultKeep.creatorId
 WHERE
     vaultKeep.id = LAST_INSERT_ID();
+
+    SELECT vaultKeep.*, keeps.*, accounts.*
+FROM
+    vaultKeep
+    JOIN accounts ON accounts.id = vaultKeep.creatorId
+    JOIN keeps ON keeps.id = vaultKeep.keepId
+WHERE
+    vaultKeep.vaultId = 72;

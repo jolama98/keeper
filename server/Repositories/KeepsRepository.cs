@@ -80,6 +80,12 @@ public class KeepsRepository
 
         return keep;
     }
+
+    internal Keep GetKeepByKeepId(int keepId)
+    {
+        throw new NotImplementedException();
+    }
+
     internal void UpdateKeep(Keep keepToUpdate)
     {
         string sql = @"
