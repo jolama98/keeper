@@ -5,18 +5,22 @@ import KeepCard from '../components/KeepCard.vue';
 import { keepsService } from '../services/KeepsService.js';
 import Pop from '../utils/Pop.js';
 import { computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 
-const account = computed(() => AppState.account)
+const route = useRoute()
+
+const account = computed(() => AppState.account.id)
 const keeps = computed(() => AppState.keeps)
+const vaults = computed(() => AppState.vaults)
 
 onMounted(() => {
   gatAllKeeps()
-  getVaultsByCreatorId()
+  getVaultsById()
 })
-
-async function getVaultsByCreatorId(accountId) {
+async function getVaultsById() {
   try {
-    await vaultService.getVaultsByCreatorId(account.value.id)
+
+    await vaultService.getVaultsById(route.params.vaultId)
   }
   catch (error) {
     Pop.error(error);
@@ -37,6 +41,7 @@ async function gatAllKeeps() {
 <template>
   <div class="container">
     <h1>Vaults</h1>
+    {{ vault }}
     <h2>Keeps</h2>
     <div class="row">
       <div v-for="keep in keeps" :key="keep.id" class="img-card col-md-3 col-6 pb-2 ">
