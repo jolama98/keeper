@@ -19,12 +19,12 @@ const keep = computed(() => AppState.setActiveKeep)
 
           <div class="col-md-6  d-flex flex-column justify-content-around">
             <div class="d-flex justify-content-center">
-              <p class="mdi mdi-eye">{{ keep.views }}</p>
-              <p class="mdi mdi-sack">{{ keep.kept }}</p>
+              <p class="mdi mdi-eye p-2"> {{ keep.views }}</p>
+              <p class="mdi mdi-sack p-2"> {{ keep.kept }}</p>
             </div>
             <div class="d-flex flex-column text-center ">
-              <h1 class="modal-title fs-2" id="keepModal">{{ keep?.name }}</h1>
-              <p>{{ keep.description }}</p>
+              <h1 class="modal-title fs-2" id="keepModal"> {{ keep?.name }}</h1>
+              <p class="p-2">{{ keep.description }}</p>
             </div>
             <div class="d-flex align-items-center  justify-content-around    ">
 
@@ -42,8 +42,14 @@ const keep = computed(() => AppState.setActiveKeep)
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
               <div class="d-flex align-items-center ">
-                <img class="avatar p-1" :src="keep.creator?.picture" alt="">
-                <p class="m-0 creator-name">{{ keep.creator?.name }}</p>
+                <!-- <router-link :to="{ name: 'Event', params: { eventId: event.id } }">
+                  <img @click="setActiveEvent()" :src="event.coverImg" class="card-img-top" alt="...">
+                </router-link> -->
+                <router-link :to="{ name: 'Profile' }">
+                  <img aria-label="Close" data-bs-dismiss="modal" class="avatar p-1" :src="keep.creator?.picture"
+                    alt="">
+                </router-link>
+                <p class=" m-0 p-2 creator-name">{{ keep.creator?.name }}</p>
               </div>
             </div>
           </div>

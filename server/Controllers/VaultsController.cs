@@ -1,6 +1,6 @@
 namespace keeper.Controllers;
 
-[Authorize]
+
 [ApiController]
 [Route("api/[controller]")]
 public class VaultsController : ControllerBase
@@ -16,6 +16,7 @@ public class VaultsController : ControllerBase
     }
 
     //SECTION - create vault
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<Vault>> CreateVault([FromBody] Vault vaultData)
     {
@@ -49,6 +50,7 @@ public class VaultsController : ControllerBase
     }
 
     //SECTION - edit vault
+    [Authorize]
     [HttpPut("{vaultId}")]
     public async Task<ActionResult<Vault>> UpdateVault(int vaultId, [FromBody] Vault vaultData)
     {
@@ -65,6 +67,7 @@ public class VaultsController : ControllerBase
     }
 
     //SECTION - delete vault
+    [Authorize]
     [HttpDelete("{vaultId}")]
     public async Task<ActionResult<string>> DestroyVault(int vaultId)
     {
