@@ -33,6 +33,7 @@ const account = computed(() => AppState.account)
             Home
           </router-link>
         </li>
+        //FIXME - Only show if the user has an account and is not on a profile page
         <li v-if="account?.id" data-bs-target="#createKeepModal" data-bs-toggle="modal">
           <p class="btn text-dark fw-bold lighten-30 selectable text-uppercase" role="button">Create</p>
         </li>
