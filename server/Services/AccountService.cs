@@ -10,11 +10,7 @@ public class AccountService
 
   private Account GetAccount(string accountId)
   {
-    Account account = _repo.GetById(accountId);
-    if (account == null)
-    {
-      throw new Exception("Invalid Account Id");
-    }
+    Account account = _repo.GetById(accountId) ?? throw new Exception("Invalid Account Id");
     return account;
   }
 

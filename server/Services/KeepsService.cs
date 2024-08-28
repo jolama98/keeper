@@ -3,6 +3,7 @@
 
 namespace keeper.Services;
 
+
 public class KeepsService
 {
     private readonly KeepsRepository _keepsRepository;
@@ -33,12 +34,7 @@ public class KeepsService
 
     internal Keep GetKeepById(int keepId)
     {
-        Keep keep = _keepsRepository.GetKeepById(keepId);
-
-        if (keep == null)
-        {
-            throw new Exception($"No keep found with the id of {keepId}");
-        }
+        Keep keep = _keepsRepository.GetKeepById(keepId) ?? throw new Exception($"No keep found with the id of {keepId}");
         return keep;
     }
 

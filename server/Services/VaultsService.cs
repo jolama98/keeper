@@ -44,11 +44,7 @@ public class VaultsService
 
     private Vault GetVaultById(int vaultId)
     {
-        Vault vault = _vaultsRepository.GetVaultById(vaultId);
-        if (vault == null)
-        {
-            throw new Exception($"No vault was found with the id of {vaultId}");
-        }
+        Vault vault = _vaultsRepository.GetVaultById(vaultId) ?? throw new Exception($"No vault was found with the id of {vaultId}");
         return vault;
     }
     internal Vault GetPublicVault(int vaultId, string userId)
@@ -64,21 +60,19 @@ public class VaultsService
 
     internal Vault GetVaultById(int vaultId, string userId)
     {
-        Vault vault = _vaultsRepository.GetVaultById(vaultId);
-        if (vault.CreatorId != userId && vault.IsPrivate != false)
+        Vault vault = GetVaultById(vaultId);
+
+        if (vault.CreatorId == userId && vault.IsPrivate != false)
         {
             throw new Exception($"No vault was found with the id of {vaultId}");
         }
+
         return vault;
     }
 
     internal Vault GetVaultId(int vaultId)
     {
-        Vault vault = _vaultsRepository.GetVaultById(vaultId);
-        if (vault == null)
-        {
-            throw new Exception($"No vault was found with the id of {vaultId}");
-        }
+        Vault vault = _vaultsRepository.GetVaultById(vaultId) ?? throw new Exception($"No vault was found with the id of {vaultId}");
         return vault;
     }
 }

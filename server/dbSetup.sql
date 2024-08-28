@@ -68,3 +68,7 @@ WHERE
 
 
 DELETE  FROM vaultKeep WHERE id = @vaultKeepId LIMIT 1;
+
+
+
+SELECT * FROM accounts WHERE id = ;

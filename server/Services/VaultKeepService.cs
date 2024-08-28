@@ -44,11 +44,7 @@ public class VaultKeepService
     }
     private VaultKeep GetVaultKeepKeepById(int vaultKeepId)
     {
-        VaultKeep vaultKeep = _vaultKeepRepository.GetVaultKeepKeepById(vaultKeepId);
-        if (vaultKeep == null)
-        {
-            throw new Exception($"No vault keep found with the id of {vaultKeepId}");
-        }
+        VaultKeep vaultKeep = _vaultKeepRepository.GetVaultKeepKeepById(vaultKeepId) ?? throw new Exception($"No vault keep found with the id of {vaultKeepId}");
         return vaultKeep;
     }
 
