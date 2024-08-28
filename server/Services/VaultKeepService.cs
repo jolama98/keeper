@@ -16,7 +16,7 @@ public class VaultKeepService
         _vaultsService = vaultsService;
     }
 
-    internal VaultKeepProfile CreateVaultKeep(VaultKeep vaultKeepData)
+    internal VaultKeep CreateVaultKeep(VaultKeep vaultKeepData)
     {
         Keep keep = _keepsService.GetKeepById(vaultKeepData.KeepId, vaultKeepData.CreatorId);
         if (keep.CreatorId != vaultKeepData.CreatorId)
@@ -24,16 +24,37 @@ public class VaultKeepService
             throw new Exception($"You are the owner of {keep.Name}, and you are not allowed to leave reviews for your own restaurant.");
         }
 
-        VaultKeepProfile vaultKeep = _vaultKeepRepository.CreateVaultKeep(vaultKeepData);
+        VaultKeep vaultKeep = _vaultKeepRepository.CreateVaultKeep(vaultKeepData);
+        return vaultKeep;
+    }
+
+    internal string DestroyVaultKeep(int vaultKeepId, string userId)
+    {
+        VaultKeep vaultKeep = GetVaultKeepKeepById(vaultKeepId);
+
+        Vault vault = _vaultsService.GetVaultId(vaultKeep.VaultId);
+
+        if (vaultKeep.CreatorId != userId)
+        {
+            throw new Exception($"This is not yours to destroy {vaultKeep.CreatorId}");
+        }
+
+        _vaultKeepRepository.DestroyVaultKeep(vaultKeepId);
+        return "Vault Keep has been dealt with";
+    }
+    private VaultKeep GetVaultKeepKeepById(int vaultKeepId)
+    {
+        VaultKeep vaultKeep = _vaultKeepRepository.GetVaultKeepKeepById(vaultKeepId);
+        if (vaultKeep == null)
+        {
+            throw new Exception($"No vault keep found with the id of {vaultKeepId}");
+        }
         return vaultKeep;
     }
 
     internal List<VaultKeepKeep> GetPublicVaultKeeps(int vaultId, string userId)
     {
         Vault vault = _vaultsService.GetPublicVault(vaultId, userId);
-
-
-
         List<VaultKeepKeep> vaultKeeps = _vaultKeepRepository.GetKeepsInVault(vaultId, userId);
         return vaultKeeps;
 

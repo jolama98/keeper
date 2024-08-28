@@ -2,7 +2,6 @@ namespace keeper.Models;
 
 public class VaultKeep : RepoItem<int>
 {
-    public string Id { get; set; }
     public int KeepId { get; set; }
     public int VaultId { get; set; }
     public string CreatorId { get; set; }
@@ -18,9 +17,8 @@ public class VaultKeepProfile : Profile
 
 public class VaultKeepKeep : Keep
 {
-    public string VaultKeepId { get; set; }
+    public int VaultKeepId { get; set; }
     public int VaultId { get; set; }
-
     public string AccountId { get; set; }
 
 

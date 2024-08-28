@@ -2,6 +2,7 @@
 
 
 
+
 namespace keeper.Repositories;
 
 public class VaultKeepRepository
@@ -13,7 +14,7 @@ public class VaultKeepRepository
         _db = db;
     }
 
-    internal VaultKeepProfile CreateVaultKeep(VaultKeep vaultKeepData)
+    internal VaultKeep CreateVaultKeep(VaultKeep vaultKeepData)
     {
         string sql = @"
         INSERT INTO
@@ -21,27 +22,28 @@ public class VaultKeepRepository
         VALUES( @keepId, @vaultId, @creatorId);
 
         SELECT
-        vaultKeep.*,
-        accounts.*
+        *
         FROM vaultKeep
-        JOIN accounts ON accounts.id = vaultKeep.creatorId
         WHERE vaultKeep.id = LAST_INSERT_ID();";
-
-        // AlbumMemberProfile albumMember = _db.Query<AlbumMember, AlbumMemberProfile, AlbumMemberProfile>(sql, (albumMember, profile) =>
-        //    {
-        //        profile.AlbumId = albumMember.AlbumId;
-        //        profile.AlbumMemberId = albumMember.Id;
-        //        return profile;
-        //    }, albumMemberData).FirstOrDefault();
-
-        // return albumMember;
-        VaultKeepProfile vaultKeep = _db.Query<VaultKeep, VaultKeepProfile, VaultKeepProfile>(sql, (vaultKeep, profile) =>
-        {
-            profile.KeepId = vaultKeep.KeepId;
-            profile.VaultKeepId = vaultKeep.Id;
-            return profile;
-        }, vaultKeepData).FirstOrDefault();
+        // Keep keep = _db.Query<Keep, Profile, Keep>(sql, JoinCreator, keepData).FirstOrDefault();
+        VaultKeep vaultKeep = _db.Query<VaultKeep>(sql, vaultKeepData).FirstOrDefault();
         return vaultKeep;
+    }
+
+    internal void DestroyVaultKeep(int vaultKeepId)
+    {
+        // string sql = "DELETE FROM keeps WHERE id = @keepId LIMIT 1";
+        string sql = "DELETE FROM vaultKeep WHERE id = @vaultKeepId LIMIT 1; ";
+        int rowsAffected = _db.Execute(sql, new { vaultKeepId });
+
+        if (rowsAffected == 0)
+        {
+            throw new Exception("DELETE FAILED. CHECK YOUR SQL MANUAL AND YOUR SQL SYNTAX FOR THE ERROR");
+        }
+        if (rowsAffected > 1)
+        {
+            throw new Exception("DELETED MORE THAN ONE ROW. CHECK YOUR SQL MANUAL AND YOUR SQL SYNTAX FOR THE ERROR");
+        }
     }
 
     internal List<VaultKeepKeep> GetKeepsInVault(int vaultId, string userId)
@@ -68,9 +70,16 @@ public class VaultKeepRepository
 
 
     }
+
+    internal VaultKeep GetVaultKeepKeepById(int vaultKeepId)
+    {
+        string sql = "SELECT * FROM vaultKeep WHERE id = @vaultKeepId ;";
+        VaultKeep vaultKeep = _db.Query<VaultKeep>(sql, new { vaultKeepId }).FirstOrDefault();
+        return vaultKeep;
+    }
     // private VaultKeep JoinCreator(VaultKeep vaultKeep, Profile profile)
     // {
-    //     vaultKeep.Creator = profile;
+    //     vaultKeep.CreatorId = profile;
     //     return vaultKeep;
     // }
 }

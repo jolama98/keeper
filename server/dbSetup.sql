@@ -64,3 +64,7 @@ FROM
     JOIN keeps ON keeps.id = vaultKeep.keepId
 WHERE
     vaultKeep.vaultId = 72;
+
+
+
+DELETE  FROM vaultKeep WHERE id = @vaultKeepId LIMIT 1;

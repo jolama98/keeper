@@ -15,14 +15,32 @@ public class VaultkeepsController : ControllerBase
 
     [HttpPost]
     // [Authorize]
-    public async Task<ActionResult<VaultKeepProfile>> CreateVaultKeep([FromBody] VaultKeep vaultKeepData)
+    public async Task<ActionResult<VaultKeep>> CreateVaultKeep([FromBody] VaultKeep vaultKeepData)
     {
         try
         {
             Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
             vaultKeepData.CreatorId = userInfo.Id;
-            VaultKeepProfile vaultKeep = _vaultKeepService.CreateVaultKeep(vaultKeepData);
+            VaultKeep vaultKeep = _vaultKeepService.CreateVaultKeep(vaultKeepData);
             return Ok(vaultKeep);
+        }
+        catch (Exception exception)
+        {
+            return BadRequest(exception.Message);
+        }
+    }
+
+
+    [HttpDelete("{vaultKeepId}")]
+    [Authorize]
+    public async Task<ActionResult<string>> DestroyVaultKeep(int vaultKeepId)
+    {
+        try
+        {
+            Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+            string message = _vaultKeepService.DestroyVaultKeep(vaultKeepId, userInfo.Id);
+            return Ok(message);
+
         }
         catch (Exception exception)
         {
