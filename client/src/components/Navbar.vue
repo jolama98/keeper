@@ -1,7 +1,8 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
+import { AppState } from '@/AppState.js';
 
 const theme = ref(loadState('theme') || 'light')
 
@@ -15,6 +16,7 @@ function toggleTheme() {
   saveState('theme', theme.value)
 }
 
+const account = computed(() => AppState.account)
 </script>
 
 <template>
@@ -31,8 +33,8 @@ function toggleTheme() {
             Home
           </router-link>
         </li>
-        <li>
-          <p class="btn text-dark fw-bold lighten-30 selectable text-uppercase">Create</p>
+        <li v-if="account?.id" data-bs-target="#createKeepModal" data-bs-toggle="modal">
+          <p class="btn text-dark fw-bold lighten-30 selectable text-uppercase" role="button">Create</p>
         </li>
       </ul>
       <div>
@@ -44,6 +46,7 @@ function toggleTheme() {
       <Login />
     </div>
   </nav>
+
 </template>
 
 <style scoped>

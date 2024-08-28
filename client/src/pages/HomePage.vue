@@ -1,6 +1,7 @@
 <script setup>
 import { AppState } from '../AppState.js';
 import KeepCard from '../components/KeepCard.vue';
+import CreateKeepForm from '../components/CreateKeepFrom.vue';
 import { keepsService } from '../services/KeepsService.js';
 import Pop from '../utils/Pop.js';
 import { computed, onMounted } from 'vue';
@@ -34,6 +35,7 @@ async function gatAllKeeps() {
     </div>
   </div>
   <KeepModal />
+  <CreateKeepForm />
 </template>
 
 <style scoped lang="scss"></style>

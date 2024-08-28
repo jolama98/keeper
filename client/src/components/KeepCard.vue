@@ -50,15 +50,14 @@ function setActiveKeep() {
 <template>
 
   <div class="card mb-1">
-    <i v-if="account?.id == props.keepProps.creator.id" type="button" @click="deleteKeep(props.keepProps.id)"
+    <i v-if="account?.id == keepProps.creator.id" type="button" @click="deleteKeep(keepProps.id)"
       class="mdi mdi-close-octagon-outline fs-5 text-danger d-flex justify-content-end icon-pos"></i>
     <div class="card-body d-flex flex-column justify-content-end" @click="setActiveKeep()" data-bs-toggle="modal"
       data-bs-target="#keepModal">
       <div class="text-bg rounded-5  d-flex  justify-content-between">
-        <p class="card-text text-light textShadow fs-4 m-1">{{ props.keepProps.name }}</p>
+        <p class="card-text text-light textShadow fs-4 m-1">{{ keepProps.name }}</p>
         <router-link :to="{ name: 'Profile' }">
-          <img data-bs-dismiss="modal" aria-label="Close" class="avatar p-1" :src="props.keepProps.creator.picture"
-            alt="">
+          <img data-bs-dismiss="modal" aria-label="Close" class="avatar p-1" :src="keepProps.creator.picture" alt="">
         </router-link>
       </div>
     </div>
