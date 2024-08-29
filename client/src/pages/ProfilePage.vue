@@ -3,11 +3,12 @@
 import { AppState } from '../AppState.js';
 import KeepCard from '../components/KeepCard.vue';
 import Pop from '../utils/Pop.js';
-import { computed, watch } from 'vue';
+import { computed, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import VaultCard from '@/components/VaultCard.vue';
 import CreateKeepForm from '../components/CreateKeepFrom.vue';
 import { profilesService } from '@/services/ProfilesService.js';
+import CreateVaultForm from '@/components/CreateVaultForm.vue';
 
 const route = useRoute()
 const keeps = computed(() => AppState.profileKeeps)
@@ -29,6 +30,9 @@ async function getProfileById(profileId) {
     Pop.error(error)
   }
 }
+onMounted(() => {
+  getKeepsByProfileId()
+})
 
 async function getKeepsByProfileId(profileId) {
   try {
@@ -76,6 +80,7 @@ async function getVaultsByProfileId(profileId) {
       </div>
     </div>
   </div>
+  <CreateVaultForm />
   <CreateKeepForm />
 </template>
 
