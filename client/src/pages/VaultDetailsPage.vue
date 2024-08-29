@@ -1,23 +1,40 @@
 <script setup>
 import { AppState } from '@/AppState.js';
-import { computed, onMounted } from 'vue';
+import { vaultService } from '@/services/VaultService.js';
+import Pop from '@/utils/Pop.js';
+import { computed, watch } from 'vue';
+import { useRoute } from 'vue-router';
+const route = useRoute()
 
-onMounted(() => {
-  getKeepsInVault()
+watch(() => route.params.vaultId, () => {
+
+  getVaultKeeps(route.params.vaultId)
 })
 
-const vaults = computed(() => AppState.activeVaults)
 
-function getKeepsInVault() {
 
+const vault = computed(() => AppState.activeVaults)
+
+
+async function getVaultKeeps(vaultId) {
+
+  try {
+    await vaultService.getVaultKeeps(vaultId)
+  }
+  catch (error) {
+    Pop.error(error);
+  }
 }
 </script>
 
 
 <template>
-  <h1>Vaults Details</h1>
-
-  {{ vaults.name }}
+  <div v-if="vault">
+    <h1>Vaults Details</h1>
+    <h2>{{ vault.name }}</h2>
+    <img :src="vault.img" alt="">
+    <p>{{ vault.description }}</p>
+  </div>
 </template>
 
 

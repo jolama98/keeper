@@ -27,7 +27,6 @@ class ProfilesService {
     logger.log('vaults', response.data)
     const vaults = response.data.map(vaultsPOJO => new Keep(vaultsPOJO))
     AppState.profileVaults = vaults
-
   }
 }
 

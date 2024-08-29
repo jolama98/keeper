@@ -48,7 +48,7 @@ async function createVault() {
               <div class="mb-3">
                 <label for="name" class="form-label">Vault Name</label>
                 <input v-model="vaultData.name" type="text" class="form-control" id="name" aria-describedby="nameVault"
-                  required maxlength="255">
+                  required maxlength="20">
                 <div id="nameVault" class="form-text">Name Your Vault</div>
               </div>
               <div class="col-12 mb-3">

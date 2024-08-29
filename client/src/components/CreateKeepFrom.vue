@@ -49,7 +49,7 @@ async function createKeep() {
             <div class="mb-3">
               <label for="name" class="form-label">Keep Name</label>
               <input v-model="keepData.name" type="text" class="form-control" id="name" aria-describedby="nameKeep"
-                required maxlength="255">
+                required maxlength="20">
               <div id="nameKeep" class="form-text">Name Your Keep</div>
             </div>
             <div class="col-12 mb-3">

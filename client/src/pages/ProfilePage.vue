@@ -9,6 +9,8 @@ import VaultCard from '@/components/VaultCard.vue';
 import CreateKeepForm from '../components/CreateKeepFrom.vue';
 import { profilesService } from '@/services/ProfilesService.js';
 import CreateVaultForm from '@/components/CreateVaultForm.vue';
+import { Vault } from '@/models/Vault.js';
+import { vaultService } from '@/services/VaultService.js';
 
 const route = useRoute()
 const keeps = computed(() => AppState.profileKeeps)
@@ -30,6 +32,12 @@ async function getProfileById(profileId) {
     Pop.error(error)
   }
 }
+// const props = defineProps({
+//   vaultProps: { type: Vault, required: true }
+// })
+
+
+
 onMounted(() => {
   getKeepsByProfileId()
 })
