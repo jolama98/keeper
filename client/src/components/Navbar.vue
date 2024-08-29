@@ -20,8 +20,8 @@ const account = computed(() => AppState.account)
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-light px-3">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+  <nav class="navbar navbar-expand-sm navbar-dark navbar-light px-3">
+    <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

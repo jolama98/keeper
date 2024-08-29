@@ -5,7 +5,7 @@ import CreateKeepForm from '../components/CreateKeepFrom.vue';
 import { keepsService } from '../services/KeepsService.js';
 import Pop from '../utils/Pop.js';
 import { computed, onMounted } from 'vue';
-import KeepModal from '../components/KeepModel.vue'
+
 
 const keeps = computed(() => AppState.keeps)
 
@@ -34,7 +34,7 @@ async function gatAllKeeps() {
       </div>
     </div>
   </div>
-  <KeepModal />
+
   <CreateKeepForm />
 </template>
 

@@ -11,7 +11,7 @@ const keep = computed(() => AppState.setActiveKeep)
 
   <div class="modal fade" id="keepModal" tabindex="-1" aria-labelledby="keepModal" aria-hidden="true">
     <div class="modal-dialog modal-xl">
-      <div class="modal-content">
+      <div v-if="keep" class="modal-content">
         <div class="row">
           <div class="col-md-6 p-0">
             <img class="keep-img img-fluid " :src="keep.img" :alt="keep.name">
@@ -42,13 +42,12 @@ const keep = computed(() => AppState.setActiveKeep)
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
               <div class="d-flex align-items-center ">
-                <!-- <router-link :to="{ name: 'Event', params: { eventId: event.id } }">
-                  <img @click="setActiveEvent()" :src="event.coverImg" class="card-img-top" alt="...">
-                </router-link> -->
-                <router-link :to="{ name: 'Profile' }">
-                  <img aria-label="Close" data-bs-dismiss="modal" class="avatar p-1" :src="keep.creator?.picture"
+
+                <RouterLink :to="{ name: 'Profile', params: { profileId: keep.creatorId } }"
+                  :title="`Go to ${keep.creator.name}'s profile page`">
+                  <img data-bs-dismiss=" modal" aria-label="Close" class="avatar p-1" :src="keep.creator.picture"
                     alt="">
-                </router-link>
+                </RouterLink>
                 <p class=" m-0 p-2 creator-name">{{ keep.creator?.name }}</p>
               </div>
             </div>
