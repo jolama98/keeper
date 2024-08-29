@@ -32,11 +32,6 @@ async function getProfileById(profileId) {
     Pop.error(error)
   }
 }
-// const props = defineProps({
-//   vaultProps: { type: Vault, required: true }
-// })
-
-
 
 onMounted(() => {
   getKeepsByProfileId()

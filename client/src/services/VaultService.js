@@ -1,11 +1,13 @@
 import { Vault } from "@/models/Vault.js";
 import { api } from "./AxiosService.js";
 import { AppState } from "@/AppState.js";
+import { logger } from "@/utils/Logger.js";
 
 class VaultService {
   async getVaultKeeps(vaultId) {
+    // { { endpoint } }             /api/vaults/{vaultId}/keeps
     const response = await api.get(`api/vaults/${vaultId}/keeps`)
-    console.log("😂😂😂😂😂", response.data);
+    logger.log("😂😂😂😂😂", response.data)
   }
   setActiveVault(vault) {
     AppState.activeVaults = vault
