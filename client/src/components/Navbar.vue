@@ -33,10 +33,28 @@ const account = computed(() => AppState.account)
             Home
           </router-link>
         </li>
-        //FIXME - Only show if the user has an account and is not on a profile page
-        <li v-if="account?.id" data-bs-target="#createKeepModal" data-bs-toggle="modal">
-          <p class="btn text-dark fw-bold lighten-30 selectable text-uppercase" role="button">Create</p>
-        </li>
+        <div v-if="account?.id" class="dropdown">
+
+          <a class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Create
+          </a>
+
+          <ul class="dropdown-menu">
+            <li>
+              <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Launch demo modal
+              </button> -->
+              <p data-bs-toggle="modal" data-bs-target="#createVaultModal"
+                class="btn text-dark fw-bold lighten-30 selectable text-uppercase" role="button">Create Vault</p>
+            </li>
+            <li>
+              <p data-bs-toggle="modal" data-bs-target="#createKeepModal"
+                class="btn text-dark fw-bold lighten-30 selectable text-uppercase" role="button">Create Keep</p>
+            </li>
+          </ul>
+        </div>
+
       </ul>
       <div>
         <button class="btn text-light" @click="toggleTheme"

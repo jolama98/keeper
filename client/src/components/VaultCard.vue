@@ -10,7 +10,7 @@ const props = defineProps({
 
 <template>
 
-  <router-link :to="{ name: 'Vault' }">
+  <router-link :to="{ name: 'VaultDetails' }">
     <div v-if="vaultProps" class="card mb-1">
       <div class=" card-body d-flex flex-column justify-content-end">
         <div class="text-bg rounded-5  d-flex  justify-content-between">

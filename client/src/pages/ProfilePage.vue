@@ -9,18 +9,14 @@ import VaultCard from '@/components/VaultCard.vue';
 import CreateKeepForm from '../components/CreateKeepFrom.vue';
 import { profilesService } from '@/services/ProfilesService.js';
 
-
 const route = useRoute()
 const keeps = computed(() => AppState.profileKeeps)
 const vaults = computed(() => AppState.profileVaults)
 const profile = computed(() => AppState.profile)
 const profileCoverImg = computed(() => `url(${profile.value?.coverImg})`)
 
-
-
 watch(() => route.params.profileId, () => {
-  // gatAllKeeps()
-  const profileId = route.params.profileId // gets our parameter out of the URL
+  const profileId = route.params.profileId
   getProfileById(profileId)
   getKeepsByProfileId(profileId)
   getVaultsByProfileId(profileId)
@@ -51,14 +47,6 @@ async function getVaultsByProfileId(profileId) {
   }
 }
 
-// async function gatAllKeeps() {
-//   try {
-//     await keepsService.getAllKeeps()
-//   }
-//   catch (error) {
-//     Pop.error(error);
-//   }
-// }
 </script>
 
 

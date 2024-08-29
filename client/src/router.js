@@ -23,8 +23,8 @@ const routes = [
   },
   {
     path: '/vault',
-    name: 'Vault',
-    component: loadPage('VaultPage')
+    name: 'VaultDetails',
+    component: loadPage('VaultDetailsPage')
   },
   {
     path: '/account',
