@@ -1,5 +1,6 @@
 
 
+
 namespace keeper.Services;
 public class VaultsService
 {
@@ -73,6 +74,12 @@ public class VaultsService
     internal Vault GetVaultId(int vaultId)
     {
         Vault vault = _vaultsRepository.GetVaultById(vaultId) ?? throw new Exception($"No vault was found with the id of {vaultId}");
+        return vault;
+    }
+
+    internal List<Vault> GetVaultsByProfileId(string profileId)
+    {
+        List<Vault> vault = _vaultsRepository.GetVaultsByProfileId(profileId);
         return vault;
     }
 }

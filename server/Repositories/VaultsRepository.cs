@@ -1,6 +1,7 @@
 
 
 
+
 namespace keeper.Repositories;
 
 public class VaultsRepository
@@ -58,6 +59,22 @@ public class VaultsRepository
         return vault;
     }
 
+    internal List<Vault> GetVaultsByProfileId(string profileId)
+    {
+        string sql = @"
+        SELECT
+        *
+        FROM vaults
+        JOIN accounts ON accounts.id = vaults.creatorId
+        WHERE accounts.id = @profileId
+        ;";
+
+        List<Vault> vault = _db.Query<Vault, Profile, Vault>(sql, JoinCreator, new
+        {
+            profileId
+        }).ToList();
+        return vault;
+    }
 
     internal void UpdateVault(Vault vaultToUpdate)
     {

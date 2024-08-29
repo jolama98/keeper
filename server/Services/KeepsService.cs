@@ -72,7 +72,10 @@ public class KeepsService
         return keep;
     }
 
-
-
+    internal List<Keep> GetKeepsByProfileId(string profileId)
+    {
+        List<Keep> keep = _keepsRepository.GetKeepsByProfileId(profileId);
+        return keep;
+    }
 }
 

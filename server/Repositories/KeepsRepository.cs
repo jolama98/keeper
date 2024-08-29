@@ -77,7 +77,22 @@ public class KeepsRepository
 
         return keep;
     }
+    internal List<Keep> GetKeepsByProfileId(string profileId)
+    {
+        string sql = @"
+        SELECT
+        *
+        FROM keeps
+        JOIN accounts ON accounts.id = keeps.creatorId
+        WHERE accounts.id = @profileId
+        ;";
 
+        List<Keep> keep = _db.Query<Keep, Profile, Keep>(sql, JoinCreator, new
+        {
+            profileId
+        }).ToList();
+        return keep;
+    }
     internal Keep GetKeepByKeepId(int keepId)
     {
         throw new NotImplementedException();
