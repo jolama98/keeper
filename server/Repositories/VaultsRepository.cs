@@ -63,17 +63,29 @@ public class VaultsRepository
     {
         string sql = @"
         SELECT
-        *
+        vaults.*,
+        accounts.*
         FROM vaults
         JOIN accounts ON accounts.id = vaults.creatorId
-        WHERE accounts.id = @profileId
-        ;";
-
+        WHERE vaults.IsPrivate = false AND accounts.id = @profileId
+; ";
         List<Vault> vault = _db.Query<Vault, Profile, Vault>(sql, JoinCreator, new
         {
             profileId
         }).ToList();
         return vault;
+
+
+        //     SELECT
+        // restaurants.*,
+        // COUNT(reports.id) AS reportCount,
+        // accounts.*
+        // FROM restaurants
+        // JOIN accounts ON accounts.id = restaurants.creatorId
+        // LEFT JOIN reports ON reports.restaurantId = restaurants.id
+        // WHERE restaurants.isShutdown = false OR restaurants.creatorId = @userId
+        // GROUP BY(restaurants.id); ";
+
     }
 
     internal void UpdateVault(Vault vaultToUpdate)

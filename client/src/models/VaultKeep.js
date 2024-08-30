@@ -1,4 +1,5 @@
 import { Account } from "./Account.js";
+import { Keep } from "./Keep.js";
 import { Vault } from "./Vault.js";
 
 export class VaultKeep {
@@ -6,6 +7,14 @@ export class VaultKeep {
     this.id = data.id;
     this.vaultId = data.vaultId;
     this.keepId = data.keepId;
+  }
+}
+
+export class VaultKeepKeep extends Keep {
+  constructor(data) {
+    super(data);
+    this.vaultKeepId = data.vaultKeepId;
+    this.vaultId = data.vaultId;
   }
 }
 

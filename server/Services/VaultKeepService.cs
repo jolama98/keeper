@@ -18,10 +18,11 @@ public class VaultKeepService
 
     internal VaultKeep CreateVaultKeep(VaultKeep vaultKeepData)
     {
-        Keep keep = _keepsService.GetKeepById(vaultKeepData.KeepId, vaultKeepData.CreatorId);
-        if (keep.CreatorId != vaultKeepData.CreatorId)
+        // Keep keep = _keepsService.GetKeepById(vaultKeepData.KeepId, vaultKeepData.CreatorId);
+        Vault vault = _vaultsService.GetVaultById(vaultKeepData.VaultId, vaultKeepData.CreatorId);
+        if (vaultKeepData.CreatorId != vault.CreatorId)
         {
-            throw new Exception($"You are the owner of {keep.Name}, and you are not allowed to leave reviews for your own restaurant.");
+            throw new Exception($"You are NOT the owner of {vault.Name}.");
         }
 
         VaultKeep vaultKeep = _vaultKeepRepository.CreateVaultKeep(vaultKeepData);

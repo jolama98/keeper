@@ -54,7 +54,7 @@ function setActiveKeep(keepId) {
 <style lang="scss" scoped>
 .card {
   height: 25vh;
-  background-image: v-bind('keepProps.recipeBackgroundImage');
+  background-image: v-bind('keepProps.backgroundImage');
   background-position: center;
   background-size: cover;
 }

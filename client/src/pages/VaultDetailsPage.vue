@@ -40,9 +40,6 @@ async function getVaultKeeps(vaultId) {
   }
 }
 </script>
-<!-- <div v-for="keep in keeps" :key="keep.id" class="img-card col-md-3 col-6 pb-2 ">
-        <KeepCard :keepProps="keep" />
-      </div> -->
 
 <template>
   <div v-if="vault">

@@ -37,8 +37,6 @@ public class AccountController : ControllerBase
     try
     {
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-      // FIXME ACCOUNT add the HTTPPUT for editing the account
-      //! I don't know how to pass the data down 9:19 pm
       Account account = _accountService.Edit(editData, accountId: userInfo.Id);
       return Ok(account);
     }

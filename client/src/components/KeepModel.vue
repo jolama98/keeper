@@ -3,18 +3,31 @@ import { AppState } from '@/AppState.js';
 import { vaultKeepService } from '@/services/vaultKeepService.js';
 import Pop from '@/utils/Pop.js';
 import { computed, ref } from 'vue';
-import { useRoute } from 'vue-router';
-import VaultKeepCard from './VaultKeepCard.vue';
+import { logger } from '@/utils/Logger.js';
+import { router } from '@/router.js';
+import { Vault } from '@/models/Vault.js';
+import { Modal } from 'bootstrap';
 
 const keep = computed(() => AppState.keepById)
-const route = useRoute()
 
-// TODO add createVaultKeep method
+// const props = defineProps({
+//   vaultProp: { type: Vault, required: true }
+// })
+const vaultKeepData = ref({
+  keepId: null,
+  vaultId: null
+})
 async function createVaultKeep() {
+
   try {
-    await vaultKeepService.createVaultKeep(accountVaultsData.value)
-    accountVaultsData.value = {
-      accountVaultsId: 0
+    vaultKeepData.value.keepId = AppState.keepById.id;
+    await vaultKeepService.createVaultKeep(vaultKeepData.value)
+    logger.log(AppState.keepById.id)
+    router.push({ name: 'VaultDetails', params: { vaultId: vaultKeepData.value.vaultId } })
+    Modal.getOrCreateInstance('#keepModal').hide()
+    vaultKeepData.value = {
+      keepId: 0,
+      vaultId: 0
     }
     Pop.success('Keep In Vault!')
   }
@@ -23,10 +36,6 @@ async function createVaultKeep() {
   }
 }
 const accountVaults = computed(() => AppState.accountVaults)
-const accountVaultsData = ref({
-
-  accountVaultsId: 0
-})
 </script>
 
 
@@ -61,13 +70,19 @@ const accountVaultsData = ref({
                 <ul class="dropdown-menu">
 
 
-                  <select id="vaultData" v-model="accountVaultsData" class="form-select "
+                  <select id="vaultData" v-model="vaultKeepData.vaultId" class="form-select "
                     aria-label="Choose A Restaurant" required>
                     <option selected value="0" disabled>Choose a Vault</option>
-                    <option v-for="vault in accountVaults" :key="vault.id" :vaultProp="vault" :value="vault.id">
-                      <VaultKeepCard :vault-prop="vault" />
+                    <option v-for="vault in accountVaults" :key="vault.id" :value="vault.id">
+                      <!-- <VaultKeepCard :vault-prop="vault" /> -->
+                      {{ vault.name }}
                     </option>
                   </select>
+                  <!-- <option v-for="restaurant in restaurants" :key="restaurant.id" :value="restaurant.id">
+                    {{ restaurant.name }}
+                  </option> -->
+
+
                 </ul>
               </div>
 

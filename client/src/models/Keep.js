@@ -11,7 +11,7 @@ export class Keep {
     this.creatorId = data.creatorId
     this.creator = data.creator;
   }
-  get recipeBackgroundImage() {
+  get backgroundImage() {
     return `url(${this.img})`
   }
 }

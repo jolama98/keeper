@@ -106,20 +106,37 @@ public class KeepsRepository
 
     internal void UpdateKeep(Keep keepToUpdate)
     {
-        // TODO add the view count to this update
+
         string sql = @"
-        UPDATE
-        keeps
+        UPDATE keeps
         Set
         description = @Description,
-        views = @Views
+        views = @Views,
         name = @Name
-        WHERE id  = @Id LIMIT 1;";
+        WHERE id = @Id LIMIT 1;";
+
+
 
         int rowsAffected = _db.Execute(sql, keepToUpdate);
         if (rowsAffected == 0) throw new Exception("UPDATE FAILED");
         if (rowsAffected > 1) throw new Exception("UPDATE DID NOT FAIL, BUT THAT IS STILL A PROBLEM");
     }
+    // UPDATE restaurants
+    // SET
+    // name = @Name,
+    // description = @Description,
+    // imgUrl = @ImgUrl,
+    // isShutDown = @IsShutDown,
+    // visits = @Visits
+    // WHERE id = @Id LIMIT 1;
+
+    // SELECT
+    // restaurants.*,
+    // accounts.*
+    // FROM restaurants
+    // JOIN accounts ON accounts.id = restaurants.creatorId
+    // WHERE restaurants.id = @Id;";
+
 
     internal void UpdateViews(Keep keep)
     {
