@@ -21,6 +21,9 @@ async function getVaultById(vaultId) {
     vaultService.setActiveVault(vaultId)
   }
   catch (error) {
+
+    // TODO push me away away away from this page
+
     Pop.error(error);
   }
 }

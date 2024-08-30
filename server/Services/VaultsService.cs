@@ -63,7 +63,7 @@ public class VaultsService
     {
         Vault vault = GetVaultById(vaultId);
 
-        if (vault.CreatorId == userId && vault.IsPrivate != false)
+        if (vault.IsPrivate == true && vault.CreatorId != userId)
         {
             throw new Exception($"No vault was found with the id of {vaultId}");
         }

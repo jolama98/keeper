@@ -70,7 +70,7 @@ async function getVaultsByProfileId(profileId) {
     <div class="row">
 
       <div v-for="vault in vaults" :key="vault.id" class="col-md-3 col-6">
-        <VaultCard :vaultProps="vault" />
+        <VaultCard :vaultProp="vault" />
       </div>
     </div>
     <p class="fs-1 fw-bolder">Keeps</p>

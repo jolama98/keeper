@@ -8,18 +8,18 @@ import { computed } from 'vue';
 const account = computed(() => AppState.account)
 
 const props = defineProps({
-  vaultProps: { type: Vault, required: true }
+  vaultProp: { type: Vault, required: true }
 })
 
 
-async function destroyVault(vaultId) {
+async function destroyVault() {
   try {
     const choice = await Pop.confirm("are you sure?", 'delete Vault')
     if (choice == false) {
       Pop.toast("action canceled successfully", 'info', 'center')
       return
     }
-    await vaultService.destroyVault(props.vaultProps.id)
+    await vaultService.destroyVault(props.vaultProp.id)
     Pop.success("Vault Deleted!")
   }
   catch (error) {
@@ -28,22 +28,22 @@ async function destroyVault(vaultId) {
 }
 
 function setActiveVault() {
-  vaultService.setActiveVault(props.vaultProps.id)
+  vaultService.setActiveVault(props.vaultProp.id)
 }
 
 </script>
 
 <template>
-  <i v-if="account?.id == vaultProps.creatorId" @click="destroyVault(vaultProps.id)" type="button"
+  <i v-if="account?.id == vaultProp.creatorId" @click="destroyVault()" type="button"
     class="mdi mdi-close-octagon-outline fs-5 text-danger d-flex justify-content-end icon-pos"></i>
 
-  <router-link :to="{ name: 'VaultDetails', params: { vaultId: vaultProps.id } }">
-    <div v-if="vaultProps" class="card mb-1" @click="setActiveVault()">
-      <div class=" card-body d-flex flex-column justify-content-end">
+  <router-link :to="{ name: 'VaultDetails', params: { vaultId: vaultProp.id } }">
+    <div v-if="vaultProp" class="card mb-1">
+      <div class=" card-body d-flex flex-column justify-content-end" @click="setActiveVault()">
         <div class="text-bg rounded-5  d-flex  justify-content-between">
 
-          <p class="card-text text-light textShadow fs-4 m-1">{{ vaultProps.name }}</p>
-          <div v-if="vaultProps.isPrivate == true">
+          <p class="card-text text-light textShadow fs-4 m-1">{{ vaultProp.name }}</p>
+          <div v-if="vaultProp.isPrivate == true">
             <i class="fs-2 mdi mdi-lock bg-light text-black rounded rounded-top-4 "></i>
           </div>
         </div>
@@ -65,7 +65,7 @@ function setActiveVault() {
 
 .card {
   height: 25vh;
-  background-image: v-bind('vaultProps.recipeBackgroundImage');
+  background-image: v-bind('vaultProp.recipeBackgroundImage');
   background-position: center;
   background-size: cover;
 }

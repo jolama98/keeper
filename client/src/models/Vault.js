@@ -9,7 +9,7 @@ export class Vault {
     this.updatedAt = new Date(data.updatedAt)
     this.creatorId = data.creatorId
   }
-  get recipeBackgroundImage() {
+  get backgroundImage() {
     return `url(${this.img})`
   }
 }
