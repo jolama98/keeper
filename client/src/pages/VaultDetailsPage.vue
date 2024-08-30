@@ -1,14 +1,16 @@
 <script setup>
 import { AppState } from '@/AppState.js';
-import { router } from '@/router.js';
+import VaultKeepCard from '@/components/VaultKeepCard.vue';
+
 import { vaultService } from '@/services/VaultService.js';
 import { logger } from '@/utils/Logger.js';
 import Pop from '@/utils/Pop.js';
 import { computed, watch } from 'vue';
-import { useRoute } from 'vue-router';
-
+import { useRoute, useRouter } from 'vue-router';
 const route = useRoute()
-
+const router = useRouter()
+const vaultKeep = computed(() => AppState.vaultKeeps)
+// const keeps = computed(() => AppState.keeps)
 
 watch(() => route.params.vaultId, () => {
   const vaultId = route.params.vaultId
@@ -20,18 +22,15 @@ const vault = computed(() => AppState.activeVault)
 
 async function getVaultById(vaultId) {
   try {
-    vaultService.setActiveVault(vaultId)
+    await vaultService.setActiveVault(vaultId)
   }
   catch (error) {
     // TODO push me away away away from this page
-    Pop.error(error);
-    if (error.response.data.includes('👀')) {
-      Pop.toast(error.response.data, 'error');
-      router.push({ name: 'Home' })
-    }
-    else {
-      Pop.toast('An error occurred', 'error')
-    }
+
+
+    Pop.toast(error.response.data, 'error');
+    router.push({ name: 'Home' })
+
     logger.error(error)
   }
 }
@@ -52,7 +51,9 @@ async function getVaultKeeps(vaultId) {
     <h2>{{ vault.name }}</h2>
     <img :src="vault.img" alt="">
     <p>{{ vault.description }}</p>
-
+    <div v-for="vaultKeeps in vaultKeep" :key="vaultKeeps.id">
+      <VaultKeepCard :vaultProp="vaultKeeps" />
+    </div>
     <!-- TODO VAULTPAGE v-for over the vaultKeeps -->
 
   </div>
