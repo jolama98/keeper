@@ -42,16 +42,15 @@ public class KeepsRepository
 
     internal List<Keep> GetAllKeeps()
     {
-
-        // TODO get the SQL Count for the kept property 
-        // reference Restaurant repositories getAll
-
         string sql = @"
     SELECT
     keeps.*,
+    COUNT(vaultKeep.id) AS Kept,
     accounts.*
     FROM keeps
     JOIN accounts ON accounts.id = keeps.creatorId
+    LEFT JOIN vaultKeep ON vaultKeep.keepId = keeps.id
+    GROUP BY (keeps.id)
     ;";
 
         List<Keep> keep = _db.Query<Keep, Profile, Keep>(sql, (keep, profile) =>
@@ -67,11 +66,14 @@ public class KeepsRepository
     {
         string sql = @"
         SELECT
-        keeps.*,
-        accounts.*
-        FROM keeps
-        JOIN accounts ON accounts.id = keeps.creatorId
-        WHERE keeps.id = @keepId
+            keeps.*,
+            COUNT(vaultKeep.id) AS Kept,
+            accounts.*
+            FROM keeps
+            JOIN accounts ON accounts.id = keeps.creatorId
+            LEFT JOIN vaultKeep ON vaultKeep.keepId = keeps.id
+            WHERE keeps.id = @keepId
+            GROUP BY (keeps.id)
         ;";
 
         Keep keep = _db.Query<Keep, Profile, Keep>(sql, JoinCreator, new
@@ -110,6 +112,7 @@ public class KeepsRepository
         keeps
         Set
         description = @Description,
+        views = @Views
         name = @Name
         WHERE id  = @Id LIMIT 1;";
 

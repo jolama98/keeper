@@ -6,12 +6,14 @@ namespace keeper.Controllers;
 public class AccountController : ControllerBase
 {
   private readonly AccountService _accountService;
+  private readonly VaultsService _vaultsService;
   private readonly Auth0Provider _auth0Provider;
 
-  public AccountController(AccountService accountService, Auth0Provider auth0Provider)
+  public AccountController(AccountService accountService, Auth0Provider auth0Provider, VaultsService vaultsService)
   {
     _accountService = accountService;
     _auth0Provider = auth0Provider;
+    _vaultsService = vaultsService;
   }
 
   [HttpGet]
@@ -29,9 +31,42 @@ public class AccountController : ControllerBase
   }
 
 
-  // TODO ACCOUNT add the HTTPPUT for editing the account
+  [HttpPut]
+  public async Task<ActionResult<Account>> EditAccount([FromBody] Account editData)
+  {
+    try
+    {
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      // FIXME ACCOUNT add the HTTPPUT for editing the account
+      //! I don't know how to pass the data down 9:19 pm
+      Account account = _accountService.Edit(editData, accountId: userInfo.Id);
+      return Ok(account);
+    }
+    catch (Exception exception)
+    {
+      return BadRequest(exception.Message);
+    }
+  }
 
-  // TODO add the HTTPGET account vaults reference help reviews
+
+  // [HttpGet("/vaults")]
+  // public async List<Task<ActionResult<Vault>>> GetAccountVailts(Vault vault)
+  // {
+  //   try
+  //   {
+  //     Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+  //     Vault vault = _vaultsService.GetVaultsByAccountId(vault, userInfo?.id);
+  //     return Ok(vault);
+  //   }
+  //   catch (Exception exception)
+  //   {
+  //     return BadRequest(exception.Message);
+  //   }
+  // }
 
 
 }
+// FIXME add the HTTPGET account vaults reference help reviews
+
+
+

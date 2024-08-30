@@ -81,10 +81,17 @@ public class VaultsService
     {
         List<Vault> vaults = _vaultsRepository.GetVaultsByProfileId(profileId);
 
-        // TODO if the profileId != userId remove all of the private vaults
-
-
+        // FIXME if the profileId != userId remove all of the private vaults. I don't know what to return
+        if (profileId != userId)
+        {
+            // return;
+        }
 
         return vaults;
+    }
+
+    internal Vault GetVaultsByAccountId(Vault vault, object id)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -34,13 +34,13 @@ public class AccountsRepository
 
   internal Account Edit(Account update)
   {
-    // TODO ACCOUNT add the coverImg for edits
     string sql = @"
-            UPDATE accounts
-            SET
-              name = @Name,
-              picture = @Picture
-            WHERE id = @Id;";
+      UPDATE accounts
+      SET
+      name = @Name,
+      picture = @Picture
+      coverImg = @coverImg
+      WHERE id = @Id;";
     _db.Execute(sql, update);
     return update;
   }

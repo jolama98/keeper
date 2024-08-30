@@ -80,3 +80,11 @@ INSERT INTO `vaultKeep`(
   `keepId`,
   `creatorId`
 ) VALUES(244, 209, "66d109c1258b754bca428053");
+
+
+SELECT keeps.*, COUNT(vaultKeep.id) AS Kept, accounts.*
+FROM
+    keeps
+    JOIN accounts ON accounts.id = keeps.creatorId
+    LEFT JOIN vaultKeep ON vaultKeep.keepId = keeps.id
+GROUP BY (keeps.id);

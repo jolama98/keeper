@@ -65,7 +65,7 @@ function setActiveVault() {
 
 .card {
   height: 25vh;
-  background-image: v-bind('vaultProp.recipeBackgroundImage');
+  background-image: v-bind('vaultProp.backgroundImage');
   background-position: center;
   background-size: cover;
 }

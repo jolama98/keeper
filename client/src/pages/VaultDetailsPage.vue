@@ -1,6 +1,8 @@
 <script setup>
 import { AppState } from '@/AppState.js';
+import { router } from '@/router.js';
 import { vaultService } from '@/services/VaultService.js';
+import { logger } from '@/utils/Logger.js';
 import Pop from '@/utils/Pop.js';
 import { computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
@@ -21,10 +23,16 @@ async function getVaultById(vaultId) {
     vaultService.setActiveVault(vaultId)
   }
   catch (error) {
-
     // TODO push me away away away from this page
-
     Pop.error(error);
+    if (error.response.data.includes('👀')) {
+      Pop.toast(error.response.data, 'error');
+      router.push({ name: 'Home' })
+    }
+    else {
+      Pop.toast('An error occurred', 'error')
+    }
+    logger.error(error)
   }
 }
 async function getVaultKeeps(vaultId) {

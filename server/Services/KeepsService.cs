@@ -35,8 +35,9 @@ public class KeepsService
     internal Keep GetKeepById(int keepId)
     {
         Keep keep = _keepsRepository.GetKeepById(keepId) ?? throw new Exception($"No keep found with the id of {keepId}");
-        // TODO update the view count for this keep
+        // FIXME update the view count for this keep
 
+        keep.Views++;
         return keep;
     }
 
