@@ -8,7 +8,7 @@ onMounted(() => { editableAccountData.value = { ...AppState.account } })
 const editableAccountData = ref({
   name: '',
   picture: '',
-  coverImage: '',
+  coverImg: '',
   email: '',
 
 })
@@ -37,12 +37,11 @@ async function updateAccount() {
     </div>
     <div class="mb-3">
       <label for="coverImage" class="form-label">Cover Image</label>
-      <input v-model="editableAccountData.coverImage" type="url" class="form-control" id="coverImage" required
-        maxlength="500">
+      <input v-model="editableAccountData.coverImg" type="url" class="form-control" id="coverImage" maxlength="500">
     </div>
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
-      <input v-model="editableAccountData.email" type="email" class="form-control" id="email" required maxlength="500">
+      <input v-model="editableAccountData.email" type="email" class="form-control" id="email" required maxlength="100">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

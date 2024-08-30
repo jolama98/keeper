@@ -60,6 +60,7 @@ async function getVaultsByProfileId(profileId) {
       <section class="row">
         <div class="col-12">
           <div class="text-center cover-img">
+            <img :src="profile.coverImg" alt="">
             <img :src="profile.picture" :alt="profile.name" class="avatar">
             <h1>{{ profile.name }}</h1>
           </div>
@@ -95,7 +96,7 @@ async function getVaultsByProfileId(profileId) {
 
 .cover-img {
   height: 60vh;
-  background-image: v-bind(profileCoverImg);
+  // background-image: v-bind('profile?.backgroundImage');
   background-size: cover;
   display: flex;
   flex-direction: column;

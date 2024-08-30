@@ -32,19 +32,13 @@ async function removeKeepFormVault(vaultKeepId) {
 
 
 <template>
-  <!-- <div v-if="vaultProp">
-    <p class="text-dark justify-content-center d-flex">{{ vaultProp?.name }}</p>
-  </div> -->
-
-
-
-
-  <div v-if="vaultProp" class="card mb-1">
+  <div v-if="vaultProp" class="mb-1">
     <i type="button" @click="removeKeepFormVault(vaultProp.vaultKeepId)"
       class="mdi mdi-close-octagon-outline fs-5 text-danger d-flex justify-content-end icon-pos"></i>
     <div class="card-body d-flex flex-column justify-content-end" @click="setActiveKeep(vaultProp.id)"
       data-bs-toggle="modal" data-bs-target="#keepModal">
       <div class="text-bg rounded-5  d-flex  justify-content-between">
+        <img class="img-fluid card" :src="vaultProp.img" alt="">
         <p class="card-text text-light textShadow fs-4 m-1">{{ vaultProp.name }}</p>
 
         <RouterLink :to="{ name: 'Profile', params: { profileId: vaultProp.creatorId } }"
@@ -60,7 +54,7 @@ async function removeKeepFormVault(vaultKeepId) {
 <style lang="scss" scoped>
 .card {
   height: 25vh;
-  background-image: v-bind('vaultProp.backgroundImage');
+
   background-position: center;
   background-size: cover;
 }

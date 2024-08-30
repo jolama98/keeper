@@ -5,4 +5,7 @@ export class Profile {
     this.picture = data.picture
     this.coverImg = data.coverImg
   }
+  get backgroundImage() {
+    return `url(${this.coverImg})`
+  }
 }

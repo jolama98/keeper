@@ -5,10 +5,12 @@ namespace keeper.Services;
 public class VaultsService
 {
     private readonly VaultsRepository _vaultsRepository;
+    private readonly AccountService _accountService;
 
-    public VaultsService(VaultsRepository vaultsRepository)
+    public VaultsService(VaultsRepository vaultsRepository, AccountService accountService)
     {
         _vaultsRepository = vaultsRepository;
+        _accountService = accountService;
     }
 
     internal Vault CreateVault(Vault vaultData)
@@ -79,6 +81,13 @@ public class VaultsService
 
     internal List<Vault> GetVaultsByProfileId(string profileId, string userId)
     {
+        if (profileId == userId)
+        {
+            List<Vault> vault = _accountService.GetVaultByAccount(profileId);
+            return vault;
+        }
+
+
         List<Vault> vaults = _vaultsRepository.GetVaultsByProfileId(profileId);
 
         return vaults;

@@ -67,8 +67,7 @@ public class VaultsRepository
         accounts.*
         FROM vaults
         JOIN accounts ON accounts.id = vaults.creatorId
-        WHERE vaults.IsPrivate = false AND accounts.id = @profileId
-; ";
+        WHERE vaults.IsPrivate = false AND accounts.id = @profileId;";
         List<Vault> vault = _db.Query<Vault, Profile, Vault>(sql, JoinCreator, new
         {
             profileId
