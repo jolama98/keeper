@@ -20,44 +20,48 @@ const account = computed(() => AppState.account)
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark navbar-light px-3">
-    <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-expand-sm navbar-dark navbar-light  px-3">
+    <button class="navbar-toggler navbar-dark navbar-light " type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon navbar-dark navbar-light"></span>
     </button>
     <div class="collapse navbar-collapse shadow-sm navbar-dark navbar-light" id="navbarText">
 
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'Home' }" class="btn text-dark fw-bold lighten-30 selectable text-uppercase">
+          <router-link :to="{ name: 'Home' }"
+            class="btn navbar-dark navbar-light fw-bold lighten-30 selectable text-uppercase">
             Home
           </router-link>
         </li>
         <div v-if="account?.id" class="dropdown">
 
-          <a class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
+          <a class="btn btn navbar-dark navbar-light fw-bold lighten-30 selectable text-uppercase dropdown-toggle"
+            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Create
           </a>
 
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu navbar-dark navbar-light">
             <li>
-              <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Launch demo modal
-              </button> -->
+              <!-- <button type=" button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">
+            Launch demo modal
+            </button> -->
               <p data-bs-toggle="modal" data-bs-target="#createVaultModal"
-                class="btn text-dark fw-bold lighten-30 selectable text-uppercase" role="button">Create Vault</p>
+                class="btn navbar-dark navbar-light  fw-bold lighten-30 selectable text-uppercase" role="button">Create
+                Vault</p>
             </li>
             <li>
               <p data-bs-toggle="modal" data-bs-target="#createKeepModal"
-                class="btn text-dark fw-bold lighten-30 selectable text-uppercase" role="button">Create Keep</p>
+                class="btn navbar-dark navbar-light fw-bold lighten-30 selectable text-uppercase" role="button">Create
+                Keep</p>
             </li>
           </ul>
         </div>
 
       </ul>
       <div>
-        <button class="btn text-light" @click="toggleTheme"
+        <button class="btn navbar-dark navbar-light" @click="toggleTheme"
           :title="`Enable ${theme == 'light' ? 'dark' : 'light'} theme.`">
           <Icon :name="theme == 'light' ? 'weather-sunny' : 'weather-night'" />
         </button>

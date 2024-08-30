@@ -36,7 +36,7 @@ function setActiveKeep(keepId) {
 
   <div v-if="keepProps" class="card mb-1">
     <i v-if="account?.id == keepProps.creator.id" type="button" @click="deleteKeep(keepProps.id)"
-      class="mdi mdi-close-octagon-outline fs-5 text-danger d-flex justify-content-end icon-pos"></i>
+      class="mdi mdi-close-octagon-outline fs-1 text-danger d-flex justify-content-end icon-pos"></i>
     <div class="card-body d-flex flex-column justify-content-end" @click="setActiveKeep(keepProps.id)"
       data-bs-toggle="modal" data-bs-target="#keepModal">
       <div class="text-bg rounded-5  d-flex  justify-content-between">
@@ -57,7 +57,10 @@ function setActiveKeep(keepId) {
   background-image: v-bind('keepProps.backgroundImage');
   background-position: center;
   background-size: cover;
+
 }
+
+
 
 .textShadow {
   text-shadow: 1px 1px 1px rgb(0, 0, 0);
@@ -73,8 +76,8 @@ function setActiveKeep(keepId) {
 }
 
 
-
 .icon-pos {
-  margin: -5%;
+  margin: +1%;
+
 }
 </style>

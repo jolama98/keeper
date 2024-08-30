@@ -45,8 +45,10 @@ const accountVaults = computed(() => AppState.accountVaults)
     <div class="modal-dialog modal-xl">
       <div v-if="keep" class="modal-content">
         <div class="row">
-          <div class="col-md-6 p-0">
-            <img class="keep-img img-fluid " :src="keep.img" :alt="keep.name">
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center justify-content-md-start">
+              <img class="keep-img img-fluid" :src="keep.img" :alt="keep.name">
+            </div>
           </div>
 
           <div class="col-md-6  d-flex flex-column justify-content-around">
@@ -58,35 +60,23 @@ const accountVaults = computed(() => AppState.accountVaults)
               <h1 class="modal-title fs-2" id="keepModal"> {{ keep?.name }}</h1>
               <p class="p-2">{{ keep.description }}</p>
             </div>
-            <div class="d-flex align-items-center  justify-content-around    ">
 
-
-
+            <div class="d-flex align-items-center justify-content-around">
               <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
+                <a class="btn btn-light border border-2 dropdown-toggle" href="#" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
                   {{ accountVaults.length }} Vaults
                 </a>
-                <ul class="dropdown-menu">
-
-
-                  <select id="vaultData" v-model="vaultKeepData.vaultId" class="form-select "
-                    aria-label="Choose A Restaurant" required>
-                    <option selected value="0" disabled>Choose a Vault</option>
-                    <option v-for="vault in accountVaults" :key="vault.id" :value="vault.id">
-                      <!-- <VaultKeepCard :vault-prop="vault" /> -->
-                      {{ vault.name }}
-                    </option>
-                  </select>
-                  <!-- <option v-for="restaurant in restaurants" :key="restaurant.id" :value="restaurant.id">
-                    {{ restaurant.name }}
-                  </option> -->
-
-
-                </ul>
+                <select id="vaultData" v-model="vaultKeepData.vaultId" class="form-select dropdown-menu"
+                  aria-label="Choose A Restaurant" required>
+                  <option selected value="0" disabled>Choose a Vault</option>
+                  <option v-for="vault in accountVaults" :key="vault.id" :value="vault.id">
+                    {{ vault.name }}
+                  </option>
+                </select>
               </div>
 
-              <button @click="createVaultKeep()" class="btn btn-color btn-dark">Save</button>
+              <button @click="createVaultKeep()" class="btn btn-light border border-2">Save</button>
               <div class="d-flex align-items-center ">
 
                 <RouterLink :to="{ name: 'Profile', params: { profileId: keep.creatorId } }"

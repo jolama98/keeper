@@ -3,20 +3,17 @@
 import { AppState } from '../AppState.js';
 import KeepCard from '../components/KeepCard.vue';
 import Pop from '../utils/Pop.js';
-import { computed, onMounted, watch } from 'vue';
+import { computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import VaultCard from '@/components/VaultCard.vue';
 import CreateKeepForm from '../components/CreateKeepFrom.vue';
 import { profilesService } from '@/services/ProfilesService.js';
 import CreateVaultForm from '@/components/CreateVaultForm.vue';
-import { Vault } from '@/models/Vault.js';
-import { vaultService } from '@/services/VaultService.js';
 
 const route = useRoute()
 const keeps = computed(() => AppState.profileKeeps)
 const vaults = computed(() => AppState.profileVaults)
 const profile = computed(() => AppState.profile)
-const profileCoverImg = computed(() => `url(${profile.value?.coverImg})`)
 
 watch(() => route.params.profileId, () => {
   const profileId = route.params.profileId
@@ -32,7 +29,6 @@ async function getProfileById(profileId) {
     Pop.error(error)
   }
 }
-
 
 async function getKeepsByProfileId(profileId) {
   try {
@@ -52,17 +48,14 @@ async function getVaultsByProfileId(profileId) {
 }
 
 </script>
-
-
 <template>
   <div class="container">
     <div v-if="profile" class="container">
-      <section class="row">
+      <section class="row ">
         <div class="col-12">
           <div class="text-center cover-img">
-            <img :src="profile.coverImg" alt="">
             <img :src="profile.picture" :alt="profile.name" class="avatar">
-            <h1>{{ profile.name }}</h1>
+            <h1 class="profile-name text-light  ">{{ profile.name }}</h1>
           </div>
         </div>
       </section>
@@ -96,11 +89,16 @@ async function getVaultsByProfileId(profileId) {
 
 .cover-img {
   height: 60vh;
-  // background-image: v-bind('profile?.backgroundImage');
+  background-image: v-bind('profile?.backgroundImage');
   background-size: cover;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
   align-items: center;
+
+}
+
+.profile-name {
+  text-shadow: 1px 1px 20px rgb(83, 82, 82), 0 0 1em rgba(133, 133, 133, 0.263), 0 0 0.2em rgba(255, 255, 255, 0.169);
 }
 </style>

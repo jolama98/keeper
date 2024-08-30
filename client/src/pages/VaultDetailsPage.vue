@@ -43,13 +43,23 @@ async function getVaultKeeps(vaultId) {
 
 <template>
   <div v-if="vault">
-    <h1>Vaults Details</h1>
-    <h2>{{ vault.name }}</h2>
-    <img :src="vault.img" alt="">
-    <p>{{ vault.description }}</p>
+    <div class="container-fluid ">
+      <div class="row">
+        <div class="d-flex justify-content-center">
+          <h1 class="">{{ vault.name }}</h1>
+        </div>
+        <img :src="vault.img" alt="">
+      </div>
+      <div class="row">
+        <div class="col-12">
 
-    <div v-for="vault in vaultKeep" :key="vault.id">
-      <VaultKeepCard :vaultProp="vault" />
+        </div>
+      </div>
+      <p>{{ vault.description }}</p>
+
+      <div v-for="vault in vaultKeep" :key="vault.id">
+        <VaultKeepCard :vaultProp="vault" />
+      </div>
     </div>
 
 

@@ -31,15 +31,13 @@ async function createVault() {
 }
 
 </script>
-
-
 <template>
   <div class="modal fade" id="createVaultModal" tabindex="-1" aria-labelledby="createVaultModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="createVaultModalLabel">Add Vault</h1>
+        <div class="modal-header justify-content-center d-flex">
+          <h1 class="modal-title fs-1" id="createVaultModalLabel">Add Vault</h1>
         </div>
         <div class="modal-body">
           <form class="container-fluid" @submit.prevent="createVault()">
@@ -66,8 +64,9 @@ async function createVault() {
                 <input v-model="vaultData.isPrivate" type="checkbox" class="form-check-input" id="isPrivate">
                 <label class="form-check-label" for="isPrivate">Private</label>
               </div>
-              <div class="col-12 text-center">
-                <img v-if="vaultData.img" :src="vaultData.img" class="img-preview" alt="could not load image">
+              <div class="col-12 text-center justify-content-center p-0">
+                <img v-if="vaultData.img" :src="vaultData.img" class=" img-preview img-fluid"
+                  alt="could not load image">
               </div>
               <div class="col-12 text-end">
                 <button class="btn btn-primary m-2"><i class="mdi mdi-plus"></i>Submit</button>
@@ -81,4 +80,9 @@ async function createVault() {
 </template>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.img-preview {
+  height: 70%;
+  width: 50%;
+}
+</style>
