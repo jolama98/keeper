@@ -16,6 +16,8 @@ export const AppState = reactive({
   keeps: [],
   /** @type {Keep} */
   setActiveKeep: null,
+  /** @type {Keep} */
+  keepById: null,
   /** @type {VaultKeepVault[]} */
   accountVaults: [],
 

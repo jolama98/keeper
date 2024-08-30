@@ -68,6 +68,7 @@ public class KeepsService
     internal Keep GetKeepById(int keepId, string userId)
     {
         Keep keep = GetKeepById(keepId);
+        keep.Views++;
         return keep;
     }
 

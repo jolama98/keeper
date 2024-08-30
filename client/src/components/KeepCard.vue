@@ -26,11 +26,9 @@ async function deleteKeep(keepId) {
     Pop.error(error);
   }
 }
-function setActiveKeep() {
-  keepsService.setActiveKeep(props.keepProps)
+function setActiveKeep(keepId) {
+  keepsService.getKeepById(keepId)
 }
-
-
 </script>
 
 
@@ -39,8 +37,8 @@ function setActiveKeep() {
   <div v-if="keepProps" class="card mb-1">
     <i v-if="account?.id == keepProps.creator.id" type="button" @click="deleteKeep(keepProps.id)"
       class="mdi mdi-close-octagon-outline fs-5 text-danger d-flex justify-content-end icon-pos"></i>
-    <div class="card-body d-flex flex-column justify-content-end" @click="setActiveKeep()" data-bs-toggle="modal"
-      data-bs-target="#keepModal">
+    <div class="card-body d-flex flex-column justify-content-end" @click="setActiveKeep(keepProps.id)"
+      data-bs-toggle="modal" data-bs-target="#keepModal">
       <div class="text-bg rounded-5  d-flex  justify-content-between">
         <p class="card-text text-light textShadow fs-4 m-1">{{ keepProps.name }}</p>
 

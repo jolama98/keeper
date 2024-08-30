@@ -7,13 +7,10 @@ import Pop from '../utils/Pop.js';
 import { computed, onMounted } from 'vue';
 import CreateVaultForm from '@/components/CreateVaultForm.vue';
 
-
-
 const keeps = computed(() => AppState.keeps)
 
 onMounted(() => {
   gatAllKeeps()
-
 })
 
 async function gatAllKeeps() {
@@ -24,7 +21,6 @@ async function gatAllKeeps() {
     Pop.error(error);
   }
 }
-
 
 </script>
 

@@ -1,4 +1,5 @@
 <script setup>
+import { AppState } from '@/AppState.js';
 import { VaultKeep } from '@/models/VaultKeep.js';
 
 const props = defineProps({
@@ -8,14 +9,8 @@ const props = defineProps({
 
 
 <template>
-  <div v-if="vaultProp" class="card mb-1">
-    <div class=" card-body d-flex flex-column justify-content-end">
-      <div class=" text-bg rounded-5 d-flex justify-content-between">
-        <p class="card-text text-light textShadow fs-4 m-1">{{ vaultProp?.name }}</p>
-        <img :src="vaultProp?.img" alt="">
-
-      </div>
-    </div>
+  <div v-if="vaultProp">
+    <p class="text-dark justify-content-center d-flex">{{ vaultProp?.name }}</p>
   </div>
 </template>
 

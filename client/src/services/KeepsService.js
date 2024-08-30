@@ -5,8 +5,6 @@ import { Keep } from "@/models/Keep.js"
 
 class KeepsService {
 
-
-
   async createKeep(keepData) {
     const response = await api.post('api/keeps', keepData)
     const newKeep = new Keep(response.data)
@@ -29,6 +27,16 @@ class KeepsService {
     const response = await api.get('api/keeps')
     const keeps = response.data.map(keepPOJO => new Keep(keepPOJO))
     AppState.keeps = keeps
+  }
+
+  async getKeepById(keepId) {
+    AppState.keepById = null
+    const response = await api.get(`api/keeps/${keepId}`)
+    logger.log(response.data)
+
+    AppState.keepById = response.data
+
+
   }
 }
 
