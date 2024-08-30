@@ -28,7 +28,7 @@ async function destroyVault(vaultId) {
 }
 
 function setActiveVault() {
-  vaultService.setActiveVault(props.vaultProps)
+  vaultService.setActiveVault(props.vaultProps.id)
 }
 
 </script>

@@ -29,6 +29,7 @@ public class AccountService
     Account original = GetAccount(accountId);
     original.Name = editData.Name ?? editData.Name;
     original.Picture = editData.Picture ?? editData.Picture;
+    // TODO ACCOUNT update the coverImg
     return _repo.Edit(original);
   }
 }

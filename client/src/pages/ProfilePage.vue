@@ -33,9 +33,6 @@ async function getProfileById(profileId) {
   }
 }
 
-onMounted(() => {
-  getKeepsByProfileId()
-})
 
 async function getKeepsByProfileId(profileId) {
   try {

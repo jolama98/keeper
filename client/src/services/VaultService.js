@@ -8,15 +8,21 @@ class VaultService {
     // { { endpoint } }             /api/vaults/{vaultId}/keeps
     const response = await api.get(`api/vaults/${vaultId}/keeps`)
     logger.log("😂😂😂😂😂", response.data)
+    AppState.vaultKeeps = response.data
   }
-  setActiveVault(vault) {
-    AppState.activeVaults = vault
+
+  async setActiveVault(vaultId) {
+    const response = await api.get(`api/vaults/${vaultId}`)
+    AppState.activeVault = response.data
+
   }
+
   async destroyVault(vaultId) {
     const response = await api.delete(`api/vaults/${vaultId}`)
     const vaultDelete = AppState.keeps.findIndex(vaultToDelete => vaultToDelete.id == vaultId)
-    AppState.vaults.splice(vaultDelete, 1)
+    AppState.profileVaults.splice(vaultDelete, 1)
   }
+
   async createVault(vaultData) {
     const response = await api.post('api/vaults', vaultData)
     const newVault = new Vault(response.data)

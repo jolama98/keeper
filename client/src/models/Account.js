@@ -38,6 +38,5 @@ export class Account {
     this.name = name;
     this.picture = picture;
     this.coverImage = coverImage;
-    // TODO add additional properties if needed
   }
 }

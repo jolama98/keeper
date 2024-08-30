@@ -84,7 +84,6 @@ public class VaultsController : ControllerBase
     }
 
     //SECTION - public vault
-    [Authorize]
     [HttpGet("{vaultId}/keeps")]
     public async Task<ActionResult<List<VaultKeepKeep>>> GetPublicVault(int vaultId)
     {

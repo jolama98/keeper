@@ -77,9 +77,14 @@ public class VaultsService
         return vault;
     }
 
-    internal List<Vault> GetVaultsByProfileId(string profileId)
+    internal List<Vault> GetVaultsByProfileId(string profileId, string userId)
     {
-        List<Vault> vault = _vaultsRepository.GetVaultsByProfileId(profileId);
-        return vault;
+        List<Vault> vaults = _vaultsRepository.GetVaultsByProfileId(profileId);
+
+        // TODO if the profileId != userId remove all of the private vaults
+
+
+
+        return vaults;
     }
 }

@@ -42,6 +42,10 @@ public class KeepsRepository
 
     internal List<Keep> GetAllKeeps()
     {
+
+        // TODO get the SQL Count for the kept property 
+        // reference Restaurant repositories getAll
+
         string sql = @"
     SELECT
     keeps.*,
@@ -100,6 +104,7 @@ public class KeepsRepository
 
     internal void UpdateKeep(Keep keepToUpdate)
     {
+        // TODO add the view count to this update
         string sql = @"
         UPDATE
         keeps

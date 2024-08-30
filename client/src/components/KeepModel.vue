@@ -4,6 +4,11 @@ import { computed } from 'vue';
 
 const keep = computed(() => AppState.setActiveKeep)
 
+// TODO add createVaultKeep method
+
+const accountVaults = computed(() => AppState.accountVaults)
+
+
 </script>
 
 
@@ -36,11 +41,15 @@ const keep = computed(() => AppState.setActiveKeep)
                 </a>
                 <button class="btn btn-color btn-dark">Save</button>
               </div>
+
               <ul class="dropdown-menu">
+                <!-- TODO v-for over AccountVaults -->
+                {{ accountVaults }}
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
+
               <div class="d-flex align-items-center ">
 
                 <RouterLink :to="{ name: 'Profile', params: { profileId: keep.creatorId } }"
