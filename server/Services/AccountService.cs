@@ -33,4 +33,10 @@ public class AccountService
 
     return _repo.Edit(original);
   }
+
+  internal List<Vault> GetVaultByAccount(string accountId)
+  {
+    List<Vault> vault = _repo.GetAccountVaults(accountId);
+    return vault;
+  }
 }

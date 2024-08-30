@@ -90,8 +90,4 @@ public class VaultsService
         return vaults;
     }
 
-    internal Vault GetVaultsByAccountId(Vault vault, object id)
-    {
-        throw new NotImplementedException();
-    }
 }

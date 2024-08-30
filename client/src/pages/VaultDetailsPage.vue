@@ -25,9 +25,6 @@ async function getVaultById(vaultId) {
     await vaultService.setActiveVault(vaultId)
   }
   catch (error) {
-    // TODO push me away away away from this page
-
-
     Pop.toast(error.response.data, 'error');
     router.push({ name: 'Home' })
 
@@ -54,7 +51,7 @@ async function getVaultKeeps(vaultId) {
     <div v-for="vaultKeeps in vaultKeep" :key="vaultKeeps.id">
       <VaultKeepCard :vaultProp="vaultKeeps" />
     </div>
-    <!-- TODO VAULTPAGE v-for over the vaultKeeps -->
+
 
   </div>
 </template>

@@ -19,6 +19,9 @@ class AccountService {
       logger.error('HAVE YOU STARTED YOUR SERVER YET???', err)
     }
   }
+
+  // TODO write get my vualts here
+
 }
 
 export const accountService = new AccountService()

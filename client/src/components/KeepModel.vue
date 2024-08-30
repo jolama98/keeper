@@ -1,12 +1,25 @@
 <script setup>
 import { AppState } from '@/AppState.js';
+import { vaultKeepService } from '@/services/vaultKeepService.js';
+import Pop from '@/utils/Pop.js';
 import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 
 const keep = computed(() => AppState.setActiveKeep)
+const route = useRoute()
 
 // TODO add createVaultKeep method
+async function createVaultKeep() {
+  try {
+    const createVaultKeepData = keep
+    await vaultKeepService.createVaultKeep(createVaultKeepData)
+  }
+  catch (error) {
+    Pop.error(error);
+  }
+}
 
-const accountVaults = computed(() => AppState.accountVaults)
+const accountVault = computed(() => AppState.accountVaults)
 
 
 </script>
@@ -33,22 +46,26 @@ const accountVaults = computed(() => AppState.accountVaults)
             </div>
             <div class="d-flex align-items-center  justify-content-around    ">
 
-              <div class="dropdown">
 
-                <a class="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              <button @click="createVaultKeep()" class="btn btn-color btn-dark">Save</button>
+
+              <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  Dropdown link
+                  Vaults
                 </a>
-                <button class="btn btn-color btn-dark">Save</button>
+                <!-- TODO v-for over AccountVaults -->
+
+                <ul class="dropdown-menu" v-for=" accountVaults in accountVault" :key="accountVaults.id">
+                  <!-- <li>{{ accountVaults.vaultId }}</li> -->
+                </ul>
               </div>
 
-              <ul class="dropdown-menu">
-                <!-- TODO v-for over AccountVaults -->
-                {{ accountVaults }}
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
+
+
+
+
+
 
               <div class="d-flex align-items-center ">
 

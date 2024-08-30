@@ -49,20 +49,20 @@ public class AccountController : ControllerBase
   }
 
 
-  // [HttpGet("/vaults")]
-  // public async List<Task<ActionResult<Vault>>> GetAccountVailts(Vault vault)
-  // {
-  //   try
-  //   {
-  //     Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
-  //     Vault vault = _vaultsService.GetVaultsByAccountId(vault, userInfo?.id);
-  //     return Ok(vault);
-  //   }
-  //   catch (Exception exception)
-  //   {
-  //     return BadRequest(exception.Message);
-  //   }
-  // }
+  [HttpGet("vaults")]
+  public async Task<ActionResult<List<Vault>>> GetVaultByAccount()
+  {
+    try
+    {
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      List<Vault> vault = _accountService.GetVaultByAccount(userInfo?.Id);
+      return Ok(vault);
+    }
+    catch (Exception exception)
+    {
+      return BadRequest(exception.Message);
+    }
+  }
 
 
 }
