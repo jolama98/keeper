@@ -20,8 +20,16 @@ class AccountService {
     }
   }
 
-  // TODO write get my vualts here
 
+  async getAccountVaults() {
+    try {
+      const response = await api.get('/account/vaults')
+      logger.log(response.data)
+    } catch (error) {
+      logger.error('HAVE YOU STARTED YOUR SERVER YET???', error)
+    }
+
+  }
 }
 
 export const accountService = new AccountService()

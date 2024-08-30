@@ -57,16 +57,9 @@ const accountVault = computed(() => AppState.accountVaults)
                 <!-- TODO v-for over AccountVaults -->
 
                 <ul class="dropdown-menu" v-for=" accountVaults in accountVault" :key="accountVaults.id">
-                  <!-- <li>{{ accountVaults.vaultId }}</li> -->
+                  <li>{{ accountVaults.vaultId }}</li>
                 </ul>
               </div>
-
-
-
-
-
-
-
               <div class="d-flex align-items-center ">
 
                 <RouterLink :to="{ name: 'Profile', params: { profileId: keep.creatorId } }"
