@@ -23,15 +23,13 @@ async function gatAllKeeps() {
     Pop.error(error);
   }
 }
-
 </script>
 
 <template>
   <div class="container bg-body-secondary">
     <div class="row">
-      <div v-for="keep in keeps" :key="keep.id" class="img-card col-md-3 col-6 pb-1  grid pt-3">
-        <KeepCard :keepProps="keep" class="item" />
-        <KeepCard :keepProps="keep" class="item" />
+      <div v-for="keep in keeps" :key="keep.id" class="item img-card col-md-3 col-6 pt-3">
+        <KeepCard :keepProps="keep" class="" />
       </div>
     </div>
   </div>
@@ -41,15 +39,15 @@ async function gatAllKeeps() {
 </template>
 
 <style scoped lang="scss">
-* {
-  box-sizing: border-box;
-}
+// * {
+//   box-sizing: border-box;
+// }
 
-.grid {
-  columns: 18rem;
-  gap: 1rem;
-  counter-reset: grid;
-}
+// .grid {
+//   columns: 18rem;
+//   gap: 1rem;
+//   counter-reset: grid;
+// }
 
 .item+.item {
   margin-top: 1rem;
@@ -57,8 +55,8 @@ async function gatAllKeeps() {
 
 .item {
   break-inside: avoid;
-  aspect-ratio: 4 / 3;
-
+  aspect-ratio: 3/ 3;
+  background: pink;
   padding: 1rem;
   border-radius: 0.75rem;
 }
@@ -74,7 +72,7 @@ async function gatAllKeeps() {
 }
 
 .item:nth-child(3n - 1) {
-  aspect-ratio: 2 / 3;
-
+  aspect-ratio: 3/ 3;
+  background: lightblue;
 }
 </style>
