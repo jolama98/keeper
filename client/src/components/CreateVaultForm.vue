@@ -65,7 +65,7 @@ async function createVault() {
                 <label class="form-check-label" for="isPrivate">Private</label>
               </div>
               <div class="col-12 text-center justify-content-center p-0">
-                <img v-if="vaultData.img" :src="vaultData.img" class=" img-preview img-fluid"
+                <img v-if="vaultData.img" :src="vaultData.img" class=" img-preview img img-fluid"
                   alt="could not load image">
               </div>
               <div class="col-12 text-end">
@@ -81,8 +81,7 @@ async function createVault() {
 
 
 <style lang="scss" scoped>
-.img-preview {
-  height: 70%;
-  width: 50%;
+.img {
+  height: 40dvh;
 }
 </style>

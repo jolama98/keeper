@@ -64,7 +64,7 @@ async function createKeep() {
               <div id="descriptionKeep" class="form-text">Description Of Keep</div>
             </div>
             <div class="col-12 text-center">
-              <img v-if="keepData.img" :src="keepData.img" class="img-preview" alt="could not load image">
+              <img v-if="keepData.img" :src="keepData.img" class="img-preview img img-fluid" alt="could not load image">
             </div>
             <div class="col-12 text-end">
               <button class="btn btn-primary m-2"><i class="mdi mdi-plus"></i>Submit</button>
@@ -78,8 +78,8 @@ async function createKeep() {
 </template>
 
 
-<style lang="scss" scoped></style>
-
-<!-- this.name = data.name;
-this.description = data.description;
-this.img = data.img; -->
+<style lang="scss" scoped>
+.img {
+  height: 40dvh;
+}
+</style>

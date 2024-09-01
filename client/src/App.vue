@@ -6,14 +6,14 @@ import KeepModal from './components/KeepModel.vue'
 </script>
 
 <template>
-  <header>
+  <header class="bg-body-secondary">
     <Navbar />
   </header>
-  <main>
+  <main class="bg-body-secondary">
     <router-view />
   </main>
-  <footer class="bg-dark text-light">
-
+  <footer class="bg-dark text-light bg-body-secondary">
+    <p class="btn lighten-30 selectable bg-dark text-light p-2 rounded-pill">Made by Jolama98</p>
   </footer>
   <KeepModal />
 
