@@ -46,7 +46,11 @@ const accountVaults = computed(() => AppState.accountVaults)
       <div v-if="keep" class="modal-content">
         <div class="row">
           <div class="col-md-6">
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
             <div class="d-flex justify-content-center justify-content-md-start">
+
               <img class="keep-img img-fluid" :src="keep.img" :alt="keep.name">
             </div>
           </div>
@@ -81,8 +85,7 @@ const accountVaults = computed(() => AppState.accountVaults)
 
                 <RouterLink :to="{ name: 'Profile', params: { profileId: keep.creatorId } }"
                   :title="`Go to ${keep.creator.name}'s profile page`">
-                  <img data-bs-dismiss=" modal" aria-label="Close" class="avatar p-1" :src="keep.creator.picture"
-                    alt="">
+                  <img data-bs-dismiss="modal" aria-label="Close" class="avatar p-1" :src="keep.creator.picture" alt="">
                 </RouterLink>
                 <p class=" m-0 p-2 creator-name">{{ keep.creator?.name }}</p>
               </div>

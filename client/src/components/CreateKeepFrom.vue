@@ -38,9 +38,11 @@ async function createKeep() {
 </script>
 
 <template>
+
   <div class="modal fade" id="createKeepModal" tabindex="-1" aria-labelledby="keepModal" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
+
 
         <form class="container-fluid" @submit.prevent="createKeep()">
           <section class="row">

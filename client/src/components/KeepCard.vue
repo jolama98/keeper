@@ -35,6 +35,7 @@ function setActiveKeep(keepId) {
 <template>
 
   <div v-if="keepProps" class="card">
+
     <i v-if="account?.id == keepProps.creator.id" type="button" @click="deleteKeep(keepProps.id)"
       class="delete-button mdi mdi-close-octagon-outline fs-1 text-danger d-flex icon-pos">
       <svg class="delete-svgIcon" viewBox="0 0 448 512">
@@ -51,7 +52,7 @@ function setActiveKeep(keepId) {
 
         <RouterLink :to="{ name: 'Profile', params: { profileId: keepProps.creatorId } }"
           :title="`Go to ${keepProps.creator.name}'s profile page`">
-          <img data-bs-dismiss=" modal" aria-label="Close" class="avatar p-1" :src="keepProps.creator.picture" alt="">
+          <img class="avatar p-1" :src="keepProps.creator.picture" alt="">
         </RouterLink>
       </div>
     </div>
@@ -60,7 +61,7 @@ function setActiveKeep(keepId) {
 
 <style lang="scss" scoped>
 .card {
-  // height: 25vh;
+  height: 25vh;
   background-image: v-bind('keepProps.backgroundImage');
   background-position: center;
   background-size: cover;

@@ -28,8 +28,8 @@ async function gatAllKeeps() {
 <template>
   <div class="container bg-body-secondary">
     <div class="row">
-      <div v-for="keep in keeps" :key="keep.id" class="item img-card col-md-3 col-6 pt-3">
-        <KeepCard :keepProps="keep" class="" />
+      <div v-for="keep in keeps" :key="keep.id" class=" img-card col-md-3 col-6 pt-3">
+        <KeepCard :keepProps="keep" />
       </div>
     </div>
   </div>
@@ -38,41 +38,4 @@ async function gatAllKeeps() {
   <CreateVaultForm />
 </template>
 
-<style scoped lang="scss">
-// * {
-//   box-sizing: border-box;
-// }
-
-// .grid {
-//   columns: 18rem;
-//   gap: 1rem;
-//   counter-reset: grid;
-// }
-
-.item+.item {
-  margin-top: 1rem;
-}
-
-.item {
-  break-inside: avoid;
-  aspect-ratio: 3/ 3;
-  background: pink;
-  padding: 1rem;
-  border-radius: 0.75rem;
-}
-
-.item::before {
-  counter-increment: grid;
-  content: counter(grid);
-}
-
-.item:nth-child(3n) {
-  aspect-ratio: 1;
-  background: lavender;
-}
-
-.item:nth-child(3n - 1) {
-  aspect-ratio: 3/ 3;
-  background: lightblue;
-}
-</style>
+<style scoped lang="scss"></style>
