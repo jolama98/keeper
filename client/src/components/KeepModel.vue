@@ -5,7 +5,6 @@ import Pop from '@/utils/Pop.js';
 import { computed, ref } from 'vue';
 import { logger } from '@/utils/Logger.js';
 import { router } from '@/router.js';
-import { Vault } from '@/models/Vault.js';
 import { Modal } from 'bootstrap';
 
 const keep = computed(() => AppState.keepById)
@@ -41,7 +40,7 @@ const accountVaults = computed(() => AppState.accountVaults)
 
 <template>
 
-  <div class="modal fade" id="keepModal" tabindex="-1" aria-labelledby="keepModal" aria-hidden="true">
+  <div class="modal fade " id="keepModal" tabindex="-1" aria-labelledby="keepModal" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div v-if="keep" class="modal-content">
         <div class="row">
@@ -81,7 +80,7 @@ const accountVaults = computed(() => AppState.accountVaults)
               </div>
 
               <button @click="createVaultKeep()" class="btn btn-light border border-2">Save</button>
-              <div class="d-flex align-items-center ">
+              <div class="d-flex align-items-center">
 
                 <RouterLink :to="{ name: 'Profile', params: { profileId: keep.creatorId } }"
                   :title="`Go to ${keep.creator.name}'s profile page`">

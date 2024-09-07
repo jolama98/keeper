@@ -46,7 +46,9 @@ async function createKeep() {
 
         <form class="container-fluid" @submit.prevent="createKeep()">
           <section class="row">
-            <h3>Add Keep</h3>
+            <div class="d-flex justify-content-center">
+              <h2 class="fw-bold p-2">Add Keep</h2>
+            </div>
 
             <div class="mb-3">
               <label for="name" class="form-label">Keep Name</label>
@@ -73,7 +75,7 @@ async function createKeep() {
             </div>
           </section>
         </form>
-        <div class="modal-footer "></div>
+
       </div>
     </div>
   </div>
