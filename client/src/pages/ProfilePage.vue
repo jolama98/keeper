@@ -10,10 +10,12 @@ import CreateKeepForm from '../components/CreateKeepFrom.vue';
 import { profilesService } from '@/services/ProfilesService.js';
 import CreateVaultForm from '@/components/CreateVaultForm.vue';
 
+
 const route = useRoute()
 const keeps = computed(() => AppState.profileKeeps)
 const vaults = computed(() => AppState.profileVaults)
 const profile = computed(() => AppState.profile)
+
 
 watch(() => route.params.profileId, () => {
   const profileId = route.params.profileId

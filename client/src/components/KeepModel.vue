@@ -44,17 +44,12 @@ const accountVaults = computed(() => AppState.accountVaults)
     <div class="modal-dialog modal-xl">
       <div v-if="keep" class="modal-content">
         <div class="row">
-          <div class="col-md-6">
-            <div class="d-flex justify-content-end">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="d-flex justify-content-center justify-content-md-start">
-
-              <img class="keep-img img-fluid" :src="keep.img" :alt="keep.name">
-            </div>
+          <div class="col-md-6 col-12">
+            <!-- <p role="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></p> -->
+            <img class="img-fluid keep-img" :src="keep.img" :alt="keep.name">
           </div>
 
-          <div class="col-md-6  d-flex flex-column justify-content-around">
+          <div class="col-md-6 col-12  d-flex flex-column justify-content-evenly ">
             <div class="d-flex justify-content-center">
               <p class="mdi mdi-eye p-2"> {{ keep.views }}</p>
               <p class="mdi mdi-sack p-2"> {{ keep.kept }}</p>
@@ -64,22 +59,34 @@ const accountVaults = computed(() => AppState.accountVaults)
               <p class="p-2">{{ keep.description }}</p>
             </div>
 
-            <div class="d-flex align-items-center justify-content-around">
-              <div class="dropdown">
-                <a class="btn btn-light border border-2 dropdown-toggle" href="#" role="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  {{ accountVaults.length }} Vaults
-                </a>
-                <select id="vaultData" v-model="vaultKeepData.vaultId" class="form-select dropdown-menu"
-                  aria-label="Choose A Restaurant" required>
-                  <option selected value="0" disabled>Choose a Vault</option>
-                  <option v-for="vault in accountVaults" :key="vault.id" :value="vault.id">
-                    {{ vault.name }}
-                  </option>
-                </select>
-              </div>
+            <div class="d-flex align-items-center justify-content-evenly ">
 
-              <button @click="createVaultKeep()" class="btn btn-light border border-2">Save</button>
+              <!-- <div class="dropdown">
+                <button class="btn btn-light border border-2 dropdown-toggle rounded-4" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  {{ accountVaults.length }} Vaults
+                </button>
+
+                <select class="dropdown-menu btn  border border-2 dropdown-toggle  rounded-4" id="vaultData"
+                  v-model="vaultKeepData.vaultId" aria-label="Choose A Restaurant" required>
+                  <option selected value="0" disabled>Choose a Vault</option>
+                </select>
+              </div> -->
+
+              <div class="dropdown">
+                <button class="btn btn-light border border-2 dropdown-toggle rounded-4" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  {{ accountVaults.length }} Vaults
+                </button>
+                <ul class="dropdown-menu">{{ accountVaults.length }} Vaults
+                  <select id="vaultData" v-model="vaultKeepData.vaultId">
+                    <option v-for="vault in accountVaults" :key="vault.id" :value="vault.id">
+                      {{ vault.name }}
+                    </option>
+                  </select>
+                </ul>
+              </div>
+              <button @click=" createVaultKeep()" class="btn btn-secondary border border-2 rounded-4">Save</button>
               <div class="d-flex align-items-center">
 
                 <RouterLink :to="{ name: 'Profile', params: { profileId: keep.creatorId } }"
@@ -105,7 +112,8 @@ const accountVaults = computed(() => AppState.accountVaults)
 
 <style lang="scss" scoped>
 .keep-img {
-  height: 100%;
+  // height: 50vh;
+  width: 100%;
   background-position: center;
   background-size: cover;
 }
