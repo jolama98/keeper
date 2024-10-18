@@ -44,12 +44,11 @@ const accountVaults = computed(() => AppState.accountVaults)
     <div class="modal-dialog modal-xl">
       <div v-if="keep" class="modal-content">
         <div class="row">
-          <div class="col-md-6 col-12">
-            <!-- <p role="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></p> -->
+          <div class="col-md-7 col-12">
             <img class="img-fluid keep-img" :src="keep.img" :alt="keep.name">
           </div>
 
-          <div class="col-md-6 col-12  d-flex flex-column justify-content-evenly ">
+          <div class="col-md-5 col-12  d-flex flex-column justify-content-evenly ">
             <div class="d-flex justify-content-center">
               <p class="mdi mdi-eye p-2"> {{ keep.views }}</p>
               <p class="mdi mdi-sack p-2"> {{ keep.kept }}</p>
@@ -59,19 +58,7 @@ const accountVaults = computed(() => AppState.accountVaults)
               <p class="p-2">{{ keep.description }}</p>
             </div>
 
-            <div class="d-flex align-items-center justify-content-evenly ">
-
-              <!-- <div class="dropdown">
-                <button class="btn btn-light border border-2 dropdown-toggle rounded-4" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  {{ accountVaults.length }} Vaults
-                </button>
-
-                <select class="dropdown-menu btn  border border-2 dropdown-toggle  rounded-4" id="vaultData"
-                  v-model="vaultKeepData.vaultId" aria-label="Choose A Restaurant" required>
-                  <option selected value="0" disabled>Choose a Vault</option>
-                </select>
-              </div> -->
+            <div class="d-flex flex-wrap  align-items-center justify-content-evenly ">
 
               <div class="dropdown">
                 <button class="btn btn-light border border-2 dropdown-toggle rounded-4" data-bs-toggle="dropdown"
@@ -93,7 +80,9 @@ const accountVaults = computed(() => AppState.accountVaults)
                   :title="`Go to ${keep.creator.name}'s profile page`">
                   <img data-bs-dismiss="modal" aria-label="Close" class="avatar p-1" :src="keep.creator.picture" alt="">
                 </RouterLink>
-                <p class=" m-0 p-2 creator-name">{{ keep.creator?.name }}</p>
+
+
+                <p class="m-0 p-2 creator-name">{{ keep.creator?.name }}</p>
               </div>
             </div>
           </div>
@@ -112,10 +101,11 @@ const accountVaults = computed(() => AppState.accountVaults)
 
 <style lang="scss" scoped>
 .keep-img {
-  // height: 50vh;
-  width: 100%;
+  height: 100%;
+  // width: 100%;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .creator-name {
