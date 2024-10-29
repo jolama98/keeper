@@ -73,7 +73,7 @@ public class VaultsService
         return vault;
     }
 
-    internal Vault GetVaultId(int vaultId)
+    public Vault GetVaultId(int vaultId)
     {
         Vault vault = _vaultsRepository.GetVaultById(vaultId) ?? throw new Exception($"No vault was found with the id of {vaultId}");
         return vault;

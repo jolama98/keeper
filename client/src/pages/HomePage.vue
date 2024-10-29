@@ -26,10 +26,16 @@ async function gatAllKeeps() {
 </script>
 
 <template>
-  <div class="container bg-body-secondary">
+  <div class="container-fluid bg-body-secondary mt-3">
     <div class="row">
-      <div v-for="keep in keeps" :key="keep.id" class=" img-card col-md-3 col-6 pt-3">
-        <KeepCard :keepProps="keep" />
+      <div class="col-12">
+        <div class="masonry-layout">
+
+          <div v-for="keep in keeps" :key="keep.id" class="masonry-item">
+            <KeepCard :keepProps="keep" />
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -38,4 +44,27 @@ async function gatAllKeeps() {
   <CreateVaultForm />
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.masonry-layout {
+  column-count: 4;
+  column-gap: 1rem;
+  width: 100%;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .masonry-layout {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 480px) {
+  .masonry-layout {
+    column-count: 2;
+  }
+}
+</style>

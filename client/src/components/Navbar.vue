@@ -20,12 +20,12 @@ const account = computed(() => AppState.account)
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark navbar-light  px-3">
+  <nav class="navbar navbar-expand-sm navbar-dark navbar-light shadow-sm">
     <button class="navbar-toggler navbar-dark navbar-light " type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon navbar-dark navbar-light"></span>
     </button>
-    <div class="collapse navbar-collapse shadow-sm navbar-dark navbar-light" id="navbarText">
+    <div class="collapse navbar-collapse  navbar-dark navbar-light" id="navbarText">
 
       <ul class="navbar-nav me-auto">
         <li>

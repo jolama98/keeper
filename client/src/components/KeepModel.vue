@@ -44,21 +44,22 @@ const accountVaults = computed(() => AppState.accountVaults)
     <div class="modal-dialog modal-xl">
       <div v-if="keep" class="modal-content">
         <div class="row">
-          <div class="col-md-7 col-12">
+          <div class="col-md-6 col-12">
             <img class="img-fluid keep-img" :src="keep.img" :alt="keep.name">
           </div>
 
-          <div class="col-md-5 col-12  d-flex flex-column justify-content-evenly ">
+          <div class="col-md-6 col-12  d-flex flex-column justify-content-between p-5 ">
             <div class="d-flex justify-content-center">
               <p class="mdi mdi-eye p-2"> {{ keep.views }}</p>
               <p class="mdi mdi-sack p-2"> {{ keep.kept }}</p>
             </div>
             <div class="d-flex flex-column text-center ">
-              <h1 class="modal-title fs-2" id="keepModal"> {{ keep?.name }}</h1>
+              <h1 class="modal-title fs-2 text-break" id="keepModal"> {{ keep?.name }}</h1>
               <p class="p-2">{{ keep.description }}</p>
+              <!-- FIXME - make text look better -->
             </div>
 
-            <div class="d-flex flex-wrap  align-items-center justify-content-evenly ">
+            <div class="d-flex flex-wrap align-items-center justify-content-evenly ">
 
               <div class="dropdown">
 

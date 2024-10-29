@@ -21,10 +21,10 @@ async function logout() {
     </button>
     <div v-else>
       <div class="dropdown my-2 my-lg-0">
-        <div type="button" class="bg-dark d-inline-flex border border-0 rounded  selectable no-select"
+        <div type="button" class="p-4 d-inline-flex border border-0 rounded  selectable no-select"
           data-bs-toggle="dropdown" aria-expanded="false">
           <div v-if="account?.picture || identity?.picture">
-            <img :src="account?.picture || identity?.picture" alt="account photo" height="40" class="rounded" />
+            <img :src="account?.picture || identity?.picture" alt="account photo" height="40" class="" />
           </div>
         </div>
         <div class="dropdown-menu dropdown-menu-sm-end dropdown-menu-start p-0" aria-labelledby="authDropdown">
