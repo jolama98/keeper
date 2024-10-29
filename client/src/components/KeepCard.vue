@@ -5,6 +5,7 @@ import Pop from '@/utils/Pop.js';
 import { computed } from 'vue';
 import { AppState } from '@/AppState.js';
 import { RouterLink } from 'vue-router';
+import { Modal } from 'bootstrap';
 
 
 const props = defineProps({
@@ -27,7 +28,15 @@ async function deleteKeep(keepId) {
   }
 }
 function setActiveKeep(keepId) {
-  keepsService.getKeepById(keepId)
+  try {
+
+    keepsService.getKeepById(keepId)
+    Modal.getOrCreateInstance('#keepModal').show()
+  }
+  catch (error){
+    Pop.error(error);
+  }
+
 }
 </script>
 
@@ -49,7 +58,7 @@ function setActiveKeep(keepId) {
 
       <div class="card-body d-flex flex-column justify-content-end" @click="setActiveKeep(keepProps.id)"
         data-bs-toggle="modal" data-bs-target="#keepModal">
-        <div class="text-bg rounded-5  d-flex  justify-content-between">
+        <div class="text-bg rounded-5 d-flex justify-content-between">
           <p class="card-text text-light textShadow fs-4 m-1">{{ keepProps.name }}</p>
 
           <RouterLink :to="{ name: 'Profile', params: { profileId: keepProps.creatorId } }"
@@ -70,7 +79,6 @@ function setActiveKeep(keepId) {
   // background-size: cover;
 
 }
-
 .textShadow {
   text-shadow: 1px 1px 1px rgb(0, 0, 0);
   font-family: marko-one;

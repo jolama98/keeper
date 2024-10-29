@@ -63,7 +63,7 @@ const accountVaults = computed(() => AppState.accountVaults)
 
               <div class="dropdown">
 
-                <button class="btn btn-light border border-2 dropdown-toggle rounded-4" data-bs-toggle="dropdown"
+                <button type="button" class="btn btn-light border border-2 dropdown-toggle rounded-4" data-bs-toggle="dropdown"
                   aria-expanded="false">
                   {{ accountVaults.length }} Vaults
                 </button>
@@ -71,7 +71,7 @@ const accountVaults = computed(() => AppState.accountVaults)
                 <select class="dropdown-menu" id="vaultData" v-model="vaultKeepData.vaultId">
 
                   <option v-for="vault in accountVaults" :key="vault.id" :value="vault.id">
-                    <li>
+                    <li class="dropdown-item">
                       {{ vault.name }}
                     </li>
                   </option>
