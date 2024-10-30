@@ -27,4 +27,4 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build-env /app/server/out .
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet <APP_NAME>.dll
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet keeper.dll
