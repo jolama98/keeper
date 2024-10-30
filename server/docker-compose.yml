@@ -4,6 +4,6 @@ services:
     image: jolamam98/keeper:latest
     restart: unless-stopped
     env_file:
-      - keeper.env
+      - keeper-env
     ports:
       - "7045:80"
