@@ -56,26 +56,22 @@ const accountVaults = computed(() => AppState.accountVaults)
             <div class="d-flex flex-column text-center ">
               <h1 class="modal-title fs-2 text-break" id="keepModal"> {{ keep?.name }}</h1>
               <p class="p-2">{{ keep.description }}</p>
-              <!-- FIXME - make text look better -->
+
             </div>
 
             <div class="d-flex flex-wrap align-items-center justify-content-evenly ">
 
               <div class="dropdown">
 
-                <button type="button" class="btn btn-light border border-2 dropdown-toggle rounded-4" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  {{ accountVaults.length }} Vaults
-                </button>
 
-                <select class="dropdown-menu" id="vaultData" v-model="vaultKeepData.vaultId">
 
+                <select  class="btn btn-light border border-2 dropdown-toggle rounded-4" data-bs-toggle="dropdown"
+                  aria-expanded="false" id="vaultData" v-model="vaultKeepData.vaultId">
+                  <option disabled selected>{{ accountVaults.length }} Vaults</option>
+                  <hr />
                   <option v-for="vault in accountVaults" :key="vault.id" :value="vault.id">
-                    <li class="dropdown-item">
-                      {{ vault.name }}
-                    </li>
+                    {{ vault.name }}
                   </option>
-
                 </select>
               </div>
 

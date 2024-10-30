@@ -9,7 +9,7 @@ import KeepModal from './components/KeepModel.vue'
   <header class="bg-body-secondary">
     <Navbar />
   </header>
-  <main class="bg-body-secondary">
+  <main class="bg-body-secondary ">
     <router-view />
   </main>
   <footer class="bg-dark text-light bg-body-secondary">

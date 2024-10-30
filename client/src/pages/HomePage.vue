@@ -26,7 +26,7 @@ async function gatAllKeeps() {
 </script>
 
 <template>
-  <div class="container-fluid bg-body-secondary mt-3">
+  <div class="container-fluid  mt-3">
     <div class="row">
       <div class="col-12">
         <div class="masonry-layout">
