@@ -20,12 +20,12 @@ const account = computed(() => AppState.account)
 </script>
 
 <template>
-  <nav class="navbar p-1  navbar-expand-sm navbar-dark navbar-light shadow-sm">
+  <nav class="navbar p-1 justify-content-end  navbar-expand-sm navbar-dark navbar-light shadow-sm">
     <button class="navbar-toggler bg-success" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse " id="navbarText">
+    <div class="collapse navbar-collapse d-flex justify-content-end " id="navbarText">
 
       <ul class="navbar-nav me-auto p-2">
         <li>
@@ -61,12 +61,12 @@ const account = computed(() => AppState.account)
             alt="">
         </div>
       </ul>
-      <div>
+      <!-- <div>
         <button class="btn navbar-dark navbar-light" @click="toggleTheme"
           :title="`Enable ${theme == 'light' ? 'dark' : 'light'} theme.`">
           <Icon :name="theme == 'light' ? 'weather-sunny' : 'weather-night'" />
         </button>
-      </div>
+      </div> -->
       <Login />
     </div>
   </nav>
