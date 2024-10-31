@@ -56,10 +56,10 @@ function setActiveKeep(keepId) {
         </svg>
       </i>
 
-      <div class="card-body d-flex flex-column justify-content-end" @click="setActiveKeep(keepProps.id)"
+      <div class="card-body d-flex flex-column   justify-content-end pb-0" @click="setActiveKeep(keepProps.id)"
         data-bs-toggle="modal" data-bs-target="#keepModal">
-        <div class="text-bg rounded-5 d-flex justify-content-between text-wrap">
-          <p class="card-text text-light textShadow fs-4 m-1">{{ keepProps.name }}</p>
+        <div class="rounded-5 d-flex justify-content-between">
+          <p class="text-light text-center textShadow fs-4 m-1">{{ keepProps.name }}</p>
           <!--
           <RouterLink :to="{ name: 'Profile', params: { profileId: keepProps.creatorId } }"
             :title="`Go to ${keepProps.creator.name}'s profile page`">

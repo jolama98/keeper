@@ -58,7 +58,7 @@ async function getVaultsByProfileId(profileId) {
           <img :src="profile.coverImg" :alt="profile.coverImg"
             class="img-fluid cover-img d-flex justify-content-center ">
           <div class="d-flex flex-column align-items-center   ">
-            <img :src="profile.picture" :alt="profile.name" class="avatar">
+            <img :src="profile.picture" :alt="profile.name" class="avatar border">
             <h1 class="profile-name text-dark">{{ profile.name }}</h1>
           </div>
         </div>
@@ -114,7 +114,7 @@ async function getVaultsByProfileId(profileId) {
 .profile-name {
   position: relative;
   top: -40px;
-  text-shadow: 1px 1px 20px rgb(83, 82, 82), 0 0 1em rgba(133, 133, 133, 0.263), 0 0 0.2em rgba(255, 255, 255, 0.169);
+  text-shadow: 1px 1px 20px rgb(227, 226, 226), 0 0 1em rgba(133, 133, 133, 0.263), 0 0 0.2em rgba(255, 255, 255, 0.169);
 }
 
 
