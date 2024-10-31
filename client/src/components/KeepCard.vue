@@ -58,8 +58,8 @@ function setActiveKeep(keepId) {
 
       <div class="card-body d-flex flex-column justify-content-end" @click="setActiveKeep(keepProps.id)"
         data-bs-toggle="modal" data-bs-target="#keepModal">
-        <div class="text-bg text-wrap rounded-5 d-flex justify-content-between">
-          <p class="card-text  text-light textShadow fs-4 m-1">{{ keepProps.name }}</p>
+        <div class="text-bg rounded-5 d-flex justify-content-between text-wrap">
+          <p class="card-text text-light textShadow fs-4 m-1">{{ keepProps.name }}</p>
           <!--
           <RouterLink :to="{ name: 'Profile', params: { profileId: keepProps.creatorId } }"
             :title="`Go to ${keepProps.creator.name}'s profile page`">
@@ -73,11 +73,6 @@ function setActiveKeep(keepId) {
 
 <style lang="scss" scoped>
 .card {
-
-  // background-image: v-bind('keepProps.backgroundImage');
-  // background-position: center;
-  // background-size: cover;
-
 }
 .textShadow {
   text-shadow: 1px 1px 1px rgb(0, 0, 0);

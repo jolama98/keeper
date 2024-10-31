@@ -52,12 +52,14 @@ async function getVaultsByProfileId(profileId) {
 </script>
 <template>
   <div class="container">
-    <div v-if="profile" class="container">
-      <section class="row ">
+    <div v-if="profile" class="container pb-3">
+      <section class="row">
         <div class="col-12">
-          <div class="text-center cover-img">
+          <img :src="profile.coverImg" :alt="profile.coverImg"
+            class="img-fluid cover-img d-flex justify-content-center ">
+          <div class="d-flex flex-column align-items-center   ">
             <img :src="profile.picture" :alt="profile.name" class="avatar">
-            <h1 class="profile-name text-light  ">{{ profile.name }}</h1>
+            <h1 class="profile-name text-dark">{{ profile.name }}</h1>
           </div>
         </div>
       </section>
@@ -65,8 +67,6 @@ async function getVaultsByProfileId(profileId) {
     <p class="fs-1 fw-bolder">Vaults</p>
     <div class="row">
       <div class="col-12">
-
-
         <div class="masonry-layout">
           <div v-for="vault in vaults" :key="vault.id" class="masonry-item">
             <VaultCard :vaultProp="vault" />
@@ -79,11 +79,11 @@ async function getVaultsByProfileId(profileId) {
     <div class="row">
       <div class="col-12">
 
-          <div class="d-flex justify-content-center  masonry-layout">
+        <div class="d-flex justify-content-center masonry-layout">
 
-            <div v-for="keep in keeps" :key="keep.id" class="masonry-item">
-              <KeepCard :keepProps="keep" />
-            </div>
+          <div v-for="keep in keeps" :key="keep.id" class="masonry-item">
+            <KeepCard :keepProps="keep" />
+          </div>
 
         </div>
       </div>
@@ -95,25 +95,25 @@ async function getVaultsByProfileId(profileId) {
 
 
 <style lang="scss" scoped>
-.avatar {
-  vertical-align: middle;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-}
-
 .cover-img {
   height: 60vh;
   background-image: v-bind('profile?.backgroundImage');
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
+  background-repeat: no-repeat;
 
 }
 
+.avatar {
+  vertical-align: middle;
+  width: 10vh;
+  height: 10vh;
+  border-radius: 50%;
+  position: relative;
+  top: -30px;
+}
+
 .profile-name {
+  position: relative;
+  top: -40px;
   text-shadow: 1px 1px 20px rgb(83, 82, 82), 0 0 1em rgba(133, 133, 133, 0.263), 0 0 0.2em rgba(255, 255, 255, 0.169);
 }
 
