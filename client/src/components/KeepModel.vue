@@ -40,7 +40,7 @@ const accountVaults = computed(() => AppState.accountVaults)
 
 <template>
 
-  <div class="modal fade " id="keepModal" tabindex="-1" aria-labelledby="keepModal" aria-hidden="true">
+  <div class="modal fade" id="keepModal" tabindex="-1" aria-labelledby="keepModal" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div v-if="keep" class="modal-content">
         <div class="row">
@@ -54,7 +54,7 @@ const accountVaults = computed(() => AppState.accountVaults)
               <p class="mdi mdi-sack p-2"> {{ keep.kept }}</p>
             </div>
             <div class="d-flex flex-column text-center ">
-              <h1 class="modal-title fs-2 text-break" id="keepModal"> {{ keep?.name }}</h1>
+              <h1 class="modal-title fs-1 text-break" id="keepModal"> {{ keep?.name }}</h1>
               <p class="p-2">{{ keep.description }}</p>
 
             </div>
@@ -62,10 +62,7 @@ const accountVaults = computed(() => AppState.accountVaults)
             <div class="d-flex flex-wrap align-items-center justify-content-evenly ">
 
               <div class="dropdown">
-
-
-
-                <select  class="btn btn-light border border-2 dropdown-toggle rounded-4" data-bs-toggle="dropdown"
+                <select class="btn btn-light border border-2 dropdown-toggle rounded-4" data-bs-toggle="dropdown"
                   aria-expanded="false" id="vaultData" v-model="vaultKeepData.vaultId">
                   <option disabled selected>{{ accountVaults.length }} Vaults</option>
                   <hr />
@@ -75,7 +72,7 @@ const accountVaults = computed(() => AppState.accountVaults)
                 </select>
               </div>
 
-              <button @click=" createVaultKeep()" class="btn btn-secondary border border-2 rounded-4">Save</button>
+              <button @click=" createVaultKeep()" class="btn btn-secondary  border border-2 rounded-4">Save</button>
               <div class="d-flex align-items-center">
 
                 <RouterLink :to="{ name: 'Profile', params: { profileId: keep.creatorId } }"
@@ -104,8 +101,7 @@ const accountVaults = computed(() => AppState.accountVaults)
 <style lang="scss" scoped>
 .keep-img {
   height: 100%;
-  // width: 100%;
-  background-position: center;
+  background-position: fill;
   background-size: contain;
   background-repeat: no-repeat;
 }

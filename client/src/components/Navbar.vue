@@ -25,40 +25,41 @@ const account = computed(() => AppState.account)
       data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon navbar-dark navbar-light"></span>
     </button>
-    <div class="collapse navbar-collapse  navbar-dark navbar-light" id="navbarText">
+    <div class="collapse navbar-collapse navbar-dark navbar-light" id="navbarText">
 
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto p-2">
         <li>
-          <router-link :to="{ name: 'Home' }"
-            class="btn navbar-dark navbar-light fw-bold lighten-30 selectable text-uppercase">
+          <router-link :to="{ name: 'Home' }" class="btn bg-success fw-bold m-1 lighten-30 selectable text-uppercase">
             Home
           </router-link>
         </li>
         <div v-if="account?.id" class="dropdown">
 
-          <a class="btn btn navbar-dark navbar-light fw-bold lighten-30 selectable text-uppercase dropdown-toggle"
-            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="btn btn fw-bold lighten-30 selectable text-uppercase dropdown-toggle m-1" href="#" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
             Create
           </a>
 
-          <ul class="dropdown-menu navbar-dark navbar-light">
+          <ul class="dropdown-menu bg-secondary">
             <li>
-              <!-- <button type=" button" class="btn btn-primary" data-bs-toggle="modal"
-            data-bs-target="#exampleModal">
-            Launch demo modal
-            </button> -->
               <p data-bs-toggle="modal" data-bs-target="#createVaultModal"
-                class="btn navbar-dark navbar-light  fw-bold lighten-30 selectable text-uppercase" role="button">Create
+                class="btn d-flex align-items-center  bg-secondary fw-bold lighten-30 selectable  text-uppercase"
+                role="button">Create
                 Vault</p>
             </li>
+            <hr>
             <li>
               <p data-bs-toggle="modal" data-bs-target="#createKeepModal"
-                class="btn navbar-dark navbar-light fw-bold lighten-30 selectable text-uppercase" role="button">Create
+                class="btn d-flex align-items-center    bg-secondary fw-bold m-1 selectable text-uppercase"
+                role="button">Create
                 Keep</p>
             </li>
           </ul>
         </div>
-
+        <div>
+          <img src="https://www.figma.com/design/5ImMGVfWaUJwSYLU4xscBk/Keepr?node-id=10292-151&t=79txUMViQAbiENZq-4"
+            alt="">
+        </div>
       </ul>
       <div>
         <button class="btn navbar-dark navbar-light" @click="toggleTheme"

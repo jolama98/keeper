@@ -60,7 +60,7 @@ function setActiveKeep(keepId) {
         data-bs-toggle="modal" data-bs-target="#keepModal">
         <div class="text-bg rounded-5 d-flex justify-content-between">
           <p class="card-text text-light textShadow fs-4 m-1">{{ keepProps.name }}</p>
-<!-- 
+<!--
           <RouterLink :to="{ name: 'Profile', params: { profileId: keepProps.creatorId } }"
             :title="`Go to ${keepProps.creator.name}'s profile page`">
           </RouterLink> -->
@@ -87,8 +87,8 @@ function setActiveKeep(keepId) {
 
 .avatar {
   vertical-align: middle;
-  width: 50px;
-  height: 50px;
+  width: 5vh;
+  height: 5vh;
   border-radius: 50%;
 }
 
