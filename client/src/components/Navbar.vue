@@ -20,12 +20,12 @@ const account = computed(() => AppState.account)
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark navbar-light shadow-sm">
-    <button class="navbar-toggler navbar-dark navbar-light " type="button" data-bs-toggle="collapse"
+  <nav class="navbar p-1  navbar-expand-sm navbar-dark navbar-light shadow-sm">
+    <button class="navbar-toggler bg-success" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon navbar-dark navbar-light"></span>
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse navbar-dark navbar-light" id="navbarText">
+    <div class="collapse navbar-collapse " id="navbarText">
 
       <ul class="navbar-nav me-auto p-2">
         <li>
@@ -86,6 +86,7 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+
 }
 
 @media screen and (min-width: 576px) {
