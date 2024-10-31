@@ -43,7 +43,7 @@ async function updateAccount() {
       <label for="email" class="form-label">Email</label>
       <input v-model="editableAccountData.email" type="email" class="form-control" id="email" required maxlength="100">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-success text-light">Submit</button>
   </form>
 </template>
 

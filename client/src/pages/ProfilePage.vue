@@ -64,15 +64,28 @@ async function getVaultsByProfileId(profileId) {
     </div>
     <p class="fs-1 fw-bolder">Vaults</p>
     <div class="row">
+      <div class="col-12">
 
-      <div v-for="vault in vaults" :key="vault.id" class="col-md-3 col-6">
-        <VaultCard :vaultProp="vault" />
+
+        <div class="masonry-layout">
+          <div v-for="vault in vaults" :key="vault.id" class="masonry-item">
+            <VaultCard :vaultProp="vault" />
+
+          </div>
+        </div>
       </div>
     </div>
     <p class="fs-1 fw-bolder">Keeps</p>
     <div class="row">
-      <div v-for="keep in keeps" :key="keep.id" class="img-card col-md-3 col-6 pt-2 ">
-        <KeepCard :keepProps="keep" />
+      <div class="col-12">
+
+          <div class="d-flex justify-content-center  masonry-layout">
+
+            <div v-for="keep in keeps" :key="keep.id" class="masonry-item">
+              <KeepCard :keepProps="keep" />
+            </div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -102,5 +115,29 @@ async function getVaultsByProfileId(profileId) {
 
 .profile-name {
   text-shadow: 1px 1px 20px rgb(83, 82, 82), 0 0 1em rgba(133, 133, 133, 0.263), 0 0 0.2em rgba(255, 255, 255, 0.169);
+}
+
+
+.masonry-layout {
+  column-count: 4;
+  column-gap: 1rem;
+  width: 100%;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .masonry-layout {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 480px) {
+  .masonry-layout {
+    column-count: 2;
+  }
 }
 </style>

@@ -60,7 +60,7 @@ async function createVault() {
                   aria-describedby="descriptionPeek" required maxlength="255">
                 <div id="descriptionKeep" class="form-text">Description Of Vault</div>
               </div>
-              <div class="mb-3 form-check">
+              <div class="mb-3 form-check d-flex justify-content-end">
                 <input v-model="vaultData.isPrivate" type="checkbox" class="form-check-input" id="isPrivate">
                 <label class="form-check-label" for="isPrivate">Private</label>
               </div>
