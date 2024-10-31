@@ -41,14 +41,18 @@ const accountVaults = computed(() => AppState.accountVaults)
 <template>
 
   <div class="modal fade" id="keepModal" tabindex="-1" aria-labelledby="keepModal" aria-hidden="true">
+
     <div class="modal-dialog modal-xl">
       <div v-if="keep" class="modal-content">
+
+
         <div class="row">
           <div class="col-md-6 col-12">
+            <button type="button" class=" btn-close closeBtn" data-bs-dismiss="modal" aria-label="Close"></button>
             <img class="img-fluid keep-img" :src="keep.img" :alt="keep.name">
           </div>
 
-          <div class="col-md-6 col-12  d-flex flex-column justify-content-between p-5 ">
+          <div class="col-md-6 col-12 d-flex flex-column justify-content-between p-5 ">
             <div class="d-flex justify-content-center">
               <p class="mdi mdi-eye p-2"> {{ keep.views }}</p>
               <p class="mdi mdi-sack p-2"> {{ keep.kept }}</p>
@@ -99,6 +103,13 @@ const accountVaults = computed(() => AppState.accountVaults)
 
 
 <style lang="scss" scoped>
+
+@media (min-width: 768px) {
+  .closeBtn {
+    display: none;
+  }
+}
+
 .keep-img {
   height: 100%;
   background-position: fill;
