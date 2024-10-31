@@ -50,7 +50,7 @@ const accountVaults = computed(() => AppState.accountVaults)
           <div class="col-md-6 col-12">
 
             <img class="img-fluid overlay keep-img" :src="keep.img" :alt="keep.name">
-            <div class="card-img-overlay closeBtn">
+            <div class="card-img-overlay align-self-start closeBtn ">
               <button type="button" class="m-1 p-1 text-bg-light  d-flex ms-auto btn-close " data-bs-dismiss="modal"
                 aria-label="Close"></button>
             </div>
