@@ -58,9 +58,9 @@ function setActiveKeep(keepId) {
 
       <div class="card-body d-flex flex-column justify-content-end" @click="setActiveKeep(keepProps.id)"
         data-bs-toggle="modal" data-bs-target="#keepModal">
-        <div class="text-bg rounded-5 d-flex justify-content-between">
-          <p class="card-text text-light textShadow fs-4 m-1">{{ keepProps.name }}</p>
-<!--
+        <div class="text-bg text-wrap rounded-5 d-flex justify-content-between">
+          <p class="card-text  text-light textShadow fs-4 m-1">{{ keepProps.name }}</p>
+          <!--
           <RouterLink :to="{ name: 'Profile', params: { profileId: keepProps.creatorId } }"
             :title="`Go to ${keepProps.creator.name}'s profile page`">
           </RouterLink> -->
@@ -87,8 +87,8 @@ function setActiveKeep(keepId) {
 
 .avatar {
   vertical-align: middle;
-  width: 5vh;
-  height: 5vh;
+  width: 4dvh;
+  height: 4dvh;
   border-radius: 50%;
 }
 
