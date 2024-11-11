@@ -55,8 +55,11 @@ async function getVaultsByProfileId(profileId) {
     <div v-if="profile" class="container pb-3">
       <section class="row">
         <div class="col-12">
-          <img :src="profile.coverImg" :alt="profile.coverImg"
-            class="img-fluid cover-img d-flex justify-content-center ">
+          <div class="d-flex justify-content-center ">
+
+            <img :src="profile.coverImg" :alt="profile.coverImg"
+            class="img-fluid cover-img">
+          </div>
           <div class="d-flex flex-column align-items-center   ">
             <img :src="profile.picture" :alt="profile.name" class="avatar border">
             <h1 class="profile-name text-dark">{{ profile.name }}</h1>
