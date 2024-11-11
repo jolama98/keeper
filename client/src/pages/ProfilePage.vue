@@ -15,6 +15,7 @@ const route = useRoute()
 const keeps = computed(() => AppState.profileKeeps)
 const vaults = computed(() => AppState.profileVaults)
 const profile = computed(() => AppState.profile)
+const accountVaults = computed(() => AppState.accountVaults)
 
 
 watch(() => route.params.profileId, () => {
@@ -22,6 +23,7 @@ watch(() => route.params.profileId, () => {
   getProfileById(profileId)
   getKeepsByProfileId(profileId)
   getVaultsByProfileId(profileId)
+  
 }, { immediate: true })
 
 async function getProfileById(profileId) {
@@ -57,12 +59,17 @@ async function getVaultsByProfileId(profileId) {
         <div class="col-12">
           <div class="d-flex justify-content-center ">
 
-            <img :src="profile.coverImg" :alt="profile.coverImg"
-            class="img-fluid cover-img">
+            <img :src="profile.coverImg" :alt="profile.coverImg" class="img-fluid cover-img">
           </div>
           <div class="d-flex flex-column align-items-center   ">
             <img :src="profile.picture" :alt="profile.name" class="avatar border">
             <h1 class="profile-name text-dark">{{ profile.name }}</h1>
+            <div class="flex-row d-flex">
+              <p class="m-1"> <samp>{{ accountVaults.length }}</samp> Vaults</p>
+              <p class="m-1">|</p>
+              <p class="m-1"> <samp> {{ keeps.length }}</samp> Keeps</p>
+
+            </div>
           </div>
         </div>
       </section>

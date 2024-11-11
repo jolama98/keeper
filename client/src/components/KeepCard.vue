@@ -2,9 +2,9 @@
 import { Keep } from '@/models/Keep.js';
 import { keepsService } from '../services/KeepsService.js';
 import Pop from '@/utils/Pop.js';
-import { computed } from 'vue';
+import { computed, watchEffect } from 'vue';
 import { AppState } from '@/AppState.js';
-import { RouterLink } from 'vue-router';
+
 import { Modal } from 'bootstrap';
 
 
@@ -12,6 +12,9 @@ const props = defineProps({
   keepProps: { type: Keep, required: true }
 })
 const account = computed(() => AppState.account)
+watchEffect(()=>{
+
+})
 
 async function deleteKeep(keepId) {
   try {
@@ -33,7 +36,7 @@ function setActiveKeep(keepId) {
     keepsService.getKeepById(keepId)
     Modal.getOrCreateInstance('#keepModal').show()
   }
-  catch (error){
+  catch (error) {
     Pop.error(error);
   }
 
@@ -70,8 +73,8 @@ function setActiveKeep(keepId) {
 </template>
 
 <style lang="scss" scoped>
-.card {
-}
+.card {}
+
 .textShadow {
   text-shadow: 1px 1px 1px rgb(0, 0, 0);
   font-family: marko-one;

@@ -47,18 +47,25 @@ async function getVaultKeeps(vaultId) {
       <div class="row">
         <div class="col-12">
           <div class="d-flex justify-content-center">
-            <div class="">
-
+            <div class="flex-column align-items-center d-flex">
               <img class="cover-img" :src="vault.img" alt="">
-              <h1>{{ vault.name }}</h1>
-              <p>{{ vault.description }}</p>
+              <h1 class="d-flex justify-content-center ">{{ vault.name }}</h1>
+              <p class="d-flex justify-content-center ">{{ vault.description }}</p>
+              <div class="d-inline-flex">
+                <p class="bg-secondary  rounded-4 p-1 "> {{ vaultKeep.length }} <samp>
+                    Keeps</samp></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-3 ">
-      <div v-for="vault in vaultKeep" :key="vault.id">
+
+
+
+
+    <div class="masonry-layout ">
+      <div v-for="vault in vaultKeep" :key="vault.id" class="masonry-item">
         <VaultKeepCard :vaultProp="vault" />
       </div>
     </div>
@@ -74,5 +81,29 @@ async function getVaultKeeps(vaultId) {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+.masonry-layout {
+  column-count: 4;
+  column-gap: 1rem;
+  width: 100%;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .masonry-layout {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 550px) {
+  .masonry-layout {
+    column-count: 2;
+  }
 }
 </style>
