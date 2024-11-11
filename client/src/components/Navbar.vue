@@ -20,57 +20,61 @@ const account = computed(() => AppState.account)
 </script>
 
 <template>
-  <nav class="navbar p-1 justify-content-end  navbar-expand-sm navbar-dark navbar-light shadow-sm">
-    <button class="navbar-toggler bg-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
 
-      <ul class="navbar-nav me-auto p-2">
-        <li>
-          <router-link :to="{ name: 'Home' }"
-            class="btn bg-success fw-bold m-1  rounded-3 lighten-30 selectable text-uppercase">
-            Home
-          </router-link>
-        </li>
-        <div v-if="account?.id" class="dropdown">
 
-          <a class="btn btn fw-bold rounded-3 lighten-30 selectable text-uppercase dropdown-toggle m-1" href="#"
-            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Create
-          </a>
 
-          <ul class="dropdown-menu bg-secondary">
-            <li>
-              <p data-bs-toggle="modal" data-bs-target="#createVaultModal"
-                class="btn d-flex align-items-center  bg-secondary fw-bold lighten-30 selectable  text-uppercase"
-                role="button">Create
-                Vault</p>
-            </li>
-            <hr>
-            <li>
-              <p data-bs-toggle="modal" data-bs-target="#createKeepModal"
-                class="btn d-flex align-items-center    bg-secondary fw-bold m-1 selectable text-uppercase"
-                role="button">Create
-                Keep</p>
-            </li>
-          </ul>
+    <nav class="navbar p-1 navbar-expand-sm w-100 shadow-sm">
+      <button class="navbar-toggler bg-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+
+        <ul class="navbar-nav me-auto p-2">
+          <li>
+            <router-link :to="{ name: 'Home' }"
+              class="btn bg-success fw-bold m-1  rounded-3 lighten-30 selectable text-uppercase">
+              Home
+            </router-link>
+          </li>
+          <div v-if="account?.id" class="dropdown">
+
+            <a class="btn btn fw-bold rounded-3 lighten-30 selectable text-uppercase dropdown-toggle m-1" href="#"
+              role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Create
+            </a>
+
+            <ul class="dropdown-menu bg-secondary">
+              <li>
+                <p data-bs-toggle="modal" data-bs-target="#createVaultModal"
+                  class="btn d-flex align-items-center  bg-secondary fw-bold lighten-30 selectable  text-uppercase"
+                  role="button">Create
+                  Vault</p>
+              </li>
+              <hr>
+              <li>
+                <p data-bs-toggle="modal" data-bs-target="#createKeepModal"
+                  class="btn d-flex align-items-center    bg-secondary fw-bold m-1 selectable text-uppercase"
+                  role="button">Create
+                  Keep</p>
+              </li>
+            </ul>
+          </div>
+
+
+        </ul>
+        <div class="w-50">
+          <img class="img-fluid keeper-img" src="/src/assets/img/keepr-logo.png" alt="">
         </div>
-        <div>
-          <img src="https://www.figma.com/design/5ImMGVfWaUJwSYLU4xscBk/Keepr?node-id=10292-151&t=79txUMViQAbiENZq-4"
-            alt="">
-        </div>
-      </ul>
-      <!-- <div>
-        <button class="btn navbar-dark navbar-light" @click="toggleTheme"
-          :title="`Enable ${theme == 'light' ? 'dark' : 'light'} theme.`">
-          <Icon :name="theme == 'light' ? 'weather-sunny' : 'weather-night'" />
-        </button>
-      </div> -->
-      <Login />
-    </div>
-  </nav>
+
+
+
+
+        <Login />
+      </div>
+    </nav>
+
+
 
 </template>
 
@@ -94,6 +98,10 @@ a:hover {
   nav {
     height: 64px;
   }
+}
+
+.keeper-img {
+  height: 6dvh;
 }
 
 .avatar {
