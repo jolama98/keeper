@@ -29,14 +29,15 @@ const account = computed(() => AppState.account)
 
       <ul class="navbar-nav me-auto p-2">
         <li>
-          <router-link :to="{ name: 'Home' }" class="btn bg-success fw-bold m-1 lighten-30 selectable text-uppercase">
+          <router-link :to="{ name: 'Home' }"
+            class="btn bg-success fw-bold m-1  rounded-3 lighten-30 selectable text-uppercase">
             Home
           </router-link>
         </li>
         <div v-if="account?.id" class="dropdown">
 
-          <a class="btn btn fw-bold lighten-30 selectable text-uppercase dropdown-toggle m-1" href="#" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="btn btn fw-bold rounded-3 lighten-30 selectable text-uppercase dropdown-toggle m-1" href="#"
+            role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Create
           </a>
 
