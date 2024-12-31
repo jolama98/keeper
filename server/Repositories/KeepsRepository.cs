@@ -115,8 +115,6 @@ public class KeepsRepository
         name = @Name
         WHERE id = @Id LIMIT 1;";
 
-
-
         int rowsAffected = _db.Execute(sql, keepToUpdate);
         if (rowsAffected == 0) throw new Exception("UPDATE FAILED");
         if (rowsAffected > 1) throw new Exception("UPDATE DID NOT FAIL, BUT THAT IS STILL A PROBLEM");

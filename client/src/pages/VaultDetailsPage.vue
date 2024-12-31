@@ -52,7 +52,7 @@ async function getVaultKeeps(vaultId) {
               <h1 class="d-flex justify-content-center ">{{ vault.name }}</h1>
               <p class="d-flex justify-content-center ">{{ vault.description }}</p>
               <div class="d-inline-flex">
-                <p class="bg-secondary  rounded-4 p-1 "> {{ vaultKeep.length }} <samp>
+                <p class="bg-secondary rounded-3 p-1 "> {{ vaultKeep.length }} <samp>
                     Keeps</samp></p>
               </div>
             </div>

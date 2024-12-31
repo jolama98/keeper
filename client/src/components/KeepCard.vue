@@ -12,7 +12,7 @@ const props = defineProps({
   keepProps: { type: Keep, required: true }
 })
 const account = computed(() => AppState.account)
-watchEffect(()=>{
+watchEffect(() => {
 
 })
 

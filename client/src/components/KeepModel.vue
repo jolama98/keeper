@@ -21,7 +21,9 @@ async function createVaultKeep() {
   try {
     vaultKeepData.value.keepId = AppState.keepById.id;
     await vaultKeepService.createVaultKeep(vaultKeepData.value)
+
     logger.log(AppState.keepById.id)
+
     router.push({ name: 'VaultDetails', params: { vaultId: vaultKeepData.value.vaultId } })
     Modal.getOrCreateInstance('#keepModal').hide()
     vaultKeepData.value = {

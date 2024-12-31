@@ -1,5 +1,4 @@
 namespace keeper.Models;
-
 public class Vault : RepoItem<int>
 {
     public string Name { get; set; }

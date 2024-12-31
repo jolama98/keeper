@@ -10,6 +10,7 @@ class KeepsService {
     const newKeep = new Keep(response.data)
     AppState.keeps.push(newKeep)
   }
+
   async setActiveKeep(keep) {
     AppState.setActiveKeep = null
     const response = await api.get(`api/keeps/${keep.id}`)

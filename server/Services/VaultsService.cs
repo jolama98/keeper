@@ -50,15 +50,6 @@ public class VaultsService
         Vault vault = _vaultsRepository.GetVaultById(vaultId) ?? throw new Exception($"No vault was found with the id of {vaultId}");
         return vault;
     }
-    internal Vault GetPublicVault(int vaultId, string userId)
-    {
-        Vault vault = GetVaultById(vaultId);
-        if (vault.CreatorId != userId && vault.IsPrivate == true)
-        {
-            throw new Exception("NOTHING TO SEE HERE 👀👀👀");
-        }
-        return vault;
-    }
 
 
     internal Vault GetVaultById(int vaultId, string userId)
@@ -70,6 +61,18 @@ public class VaultsService
             throw new Exception($"No vault was found with the id of {vaultId}");
         }
 
+        return vault;
+    }
+
+
+
+    internal Vault GetPublicVault(int vaultId, string userId)
+    {
+        Vault vault = GetVaultById(vaultId);
+        if (vault.CreatorId != userId && vault.IsPrivate == true)
+        {
+            throw new Exception("NOTHING TO SEE HERE 👀👀👀");
+        }
         return vault;
     }
 

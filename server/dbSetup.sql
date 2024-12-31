@@ -88,3 +88,4 @@ FROM
     JOIN accounts ON accounts.id = keeps.creatorId
     LEFT JOIN vaultKeep ON vaultKeep.keepId = keeps.id
 GROUP BY (keeps.id);
+
