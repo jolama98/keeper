@@ -23,56 +23,57 @@ const account = computed(() => AppState.account)
 
 
 
-    <nav class="navbar p-1 navbar-expand-sm w-100 shadow-sm">
-      <button class="navbar-toggler bg-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
+  <nav class="navbar p-1 navbar-expand-sm w-100 shadow-sm">
+    <button class="navbar-toggler bg-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
 
-        <ul class="navbar-nav me-auto p-2">
-          <li>
-            <router-link :to="{ name: 'Home' }"
-              class="btn bg-success fw-bold m-1  rounded-3 lighten-30 selectable text-uppercase">
-              Home
-            </router-link>
-          </li>
-          <div v-if="account?.id" class="dropdown">
+      <ul class="navbar-nav me-auto p-2">
+        <li>
+          <router-link :to="{ name: 'Home' }"
+            class="btn bg-success fw-bold m-1  rounded-3 lighten-30 selectable text-uppercase">
+            Home
+          </router-link>
+        </li>
+        <div v-if="account?.id" class="dropdown">
 
-            <a class="btn btn fw-bold rounded-3 lighten-30 selectable text-uppercase dropdown-toggle m-1" href="#"
-              role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Create
-            </a>
+          <a class="btn btn fw-bold rounded-3 lighten-30 selectable text-uppercase dropdown-toggle m-1" href="#"
+            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Create
+          </a>
 
-            <ul class="dropdown-menu bg-secondary">
-              <li>
-                <p data-bs-toggle="modal" data-bs-target="#createVaultModal"
-                  class="btn d-flex align-items-center  bg-secondary fw-bold lighten-30 selectable  text-uppercase"
-                  role="button">Create
-                  Vault</p>
-              </li>
-              <hr>
-              <li>
-                <p data-bs-toggle="modal" data-bs-target="#createKeepModal"
-                  class="btn d-flex align-items-center    bg-secondary fw-bold m-1 selectable text-uppercase"
-                  role="button">Create
-                  Keep</p>
-              </li>
-            </ul>
-          </div>
-
-
-        </ul>
-        <div class="w-50">
-          <img class="img-fluid keeper-img" src="/src/assets/img/keepr-logo.png" alt="">
+          <ul class="dropdown-menu bg-secondary">
+            <li>
+              <p data-bs-toggle="modal" data-bs-target="#createVaultModal"
+                class="btn d-flex align-items-center  bg-secondary fw-bold lighten-30 selectable  text-uppercase"
+                role="button">Create
+                Vault</p>
+            </li>
+            <hr>
+            <li>
+              <p data-bs-toggle="modal" data-bs-target="#createKeepModal"
+                class="btn d-flex align-items-center    bg-secondary fw-bold m-1 selectable text-uppercase"
+                role="button">Create
+                Keep</p>
+            </li>
+          </ul>
         </div>
 
 
 
-
-        <Login />
+      </ul>
+      <div class="w-50">
+        <img class="img-fluid keeper-img" src="/src/assets/img/keepr-logo.png" alt="">
       </div>
-    </nav>
+
+
+
+
+      <Login />
+    </div>
+  </nav>
 
 
 
