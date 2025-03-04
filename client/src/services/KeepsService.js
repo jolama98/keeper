@@ -34,7 +34,6 @@ class KeepsService {
     AppState.keepById = null
     const response = await api.get(`api/keeps/${keepId}`)
     logger.log(response.data)
-
     AppState.keepById = response.data
 
 

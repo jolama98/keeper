@@ -1,7 +1,7 @@
 import { logger } from "@/utils/Logger.js";
 import { api } from "./AxiosService.js";
 import { AppState } from "@/AppState.js";
-import { VaultKeep } from "@/models/VaultKeep.js";
+
 
 class VaultKeepService {
   async removeKeepFormVault(vaultKeepId) {

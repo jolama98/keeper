@@ -8,13 +8,11 @@ import { router } from '@/router.js';
 import { Modal } from 'bootstrap';
 
 const keep = computed(() => AppState.keepById)
+const accountVaults = computed(() => AppState.accountVaults)
 
-// const props = defineProps({
-//   vaultProp: { type: Vault, required: true }
-// })
 const vaultKeepData = ref({
-  keepId: null,
-  vaultId: null
+  keepId: 0,
+  vaultId: 0
 })
 async function createVaultKeep() {
 
@@ -36,7 +34,7 @@ async function createVaultKeep() {
     Pop.error(error);
   }
 }
-const accountVaults = computed(() => AppState.accountVaults)
+
 </script>
 
 
@@ -74,7 +72,7 @@ const accountVaults = computed(() => AppState.accountVaults)
               <div class="dropdown">
                 <select class="btn btn-light border border-2 dropdown-toggle rounded-4" data-bs-toggle="dropdown"
                   aria-expanded="false" v-model="vaultKeepData.vaultId">
-                  <option value="null" class="text-dark" disabled selected>{{ accountVaults.length }} Vaults</option>
+                  <option value="0" class="text-dark" disabled selected>{{ accountVaults.length }} Vaults</option>
                   <hr />
                   <option v-for="vault in accountVaults" :key="vault.id" :value="vault.id">
                     {{ vault.name }}

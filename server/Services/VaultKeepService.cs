@@ -20,6 +20,7 @@ public class VaultKeepService
     {
         // Keep keep = _keepsService.GetKeepById(vaultKeepData.KeepId, vaultKeepData.CreatorId);
         Vault vault = _vaultsService.GetVaultById(vaultKeepData.VaultId, vaultKeepData.CreatorId);
+
         if (vaultKeepData.CreatorId != vault.CreatorId)
         {
             throw new Exception($"You are NOT the owner of {vault.Name}.");
